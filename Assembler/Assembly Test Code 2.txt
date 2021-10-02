@@ -1,0 +1,13 @@
+IN A
+XCHG B, A
+MOV A, 8H
+
+SUB A, B
+JZ 6H
+
+RCL B
+INC A
+
+OUT A
+
+HLT

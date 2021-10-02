@@ -1,0 +1,6848 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 132 02/25/2009 SJ Full Version"
+
+// DATE "03/31/2021 23:52:29"
+
+// 
+// Device: Altera EPF10K10TC144-3 Package TQFP144
+// 
+
+// 
+// This Verilog file should be used for Active-HDL (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module Computer (
+	clock,
+	port_in,
+	port_out,
+	A,
+	B,
+	temp,
+	PC,
+	PC_temp,
+	IP,
+	SP,
+	OF,
+	ZF,
+	SF,
+	HLT);
+input 	clock;
+input 	[3:0] port_in;
+output 	[3:0] port_out;
+output 	[3:0] A;
+output 	[3:0] B;
+output 	[3:0] temp;
+output 	[3:0] PC;
+output 	[3:0] PC_temp;
+output 	[3:0] IP;
+output 	[1:0] SP;
+output 	OF;
+output 	ZF;
+output 	SF;
+output 	HLT;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("Computer_v.sdo");
+// synopsys translate_on
+
+wire \A~69_combout ;
+wire \A~70_combout ;
+wire \A~76_combout ;
+wire \A~83_combout ;
+wire \Add3~0_combout ;
+wire \A~91_combout ;
+wire \A~92_combout ;
+wire \Add3~1_combout ;
+wire \Stack[0][0]~regout ;
+wire \B~56_combout ;
+wire \B~57_combout ;
+wire \Stack[0][1]~regout ;
+wire \B~60_combout ;
+wire \B~61_combout ;
+wire \Stack[1][2]~regout ;
+wire \B~63_combout ;
+wire \B~64_combout ;
+wire \Stack[0][3]~regout ;
+wire \B~66_combout ;
+wire \B~67_combout ;
+wire \temp~72_combout ;
+wire \temp~73_combout ;
+wire \temp~74_combout ;
+wire \temp~80_combout ;
+wire \temp~81_combout ;
+wire \temp~87_combout ;
+wire \temp~91_combout ;
+wire \temp~95_combout ;
+wire \temp~96_combout ;
+wire \temp~97_combout ;
+wire \temp~100_combout ;
+wire \IP~8_combout ;
+wire \OF~11_combout ;
+wire \Equal0~0_combout ;
+wire \PC_temp~71_combout ;
+wire \PC_temp[0]~72_combout ;
+wire \ZF~30_combout ;
+wire \ZF~31_combout ;
+wire \LessThan0~4_combout ;
+wire \LessThan0~5_combout ;
+wire \Stack~326_combout ;
+wire \Stack~327_combout ;
+wire \Stack~328_combout ;
+wire \Stack~329_combout ;
+wire \Stack~330_combout ;
+wire \temp~110_combout ;
+wire \temp~113_combout ;
+wire \ZF~32_combout ;
+wire \Equal13~0_combout ;
+wire \Equal3~4_combout ;
+wire \SP~34_combout ;
+wire \SP~35_combout ;
+wire \SP~39_combout ;
+wire \clock~dataout ;
+wire \HLT~reg0_regout ;
+wire \HLT~reg0_wirecell_combout ;
+wire \IP~10_combout ;
+wire \Add6~1_combout ;
+wire \always1~3_combout ;
+wire \PC_temp[0]~reg0_wirecell_combout ;
+wire \PC_rtl_0|wysi_counter|counter_cell[0]~COUT ;
+wire \PC_rtl_0|wysi_counter|counter_cell[1]~COUT ;
+wire \IP~11_combout ;
+wire \Add6~2_combout ;
+wire \PC_rtl_0|wysi_counter|counter_cell[2]~COUT ;
+wire \IP~12_combout ;
+wire \IP[0]~reg0_regout ;
+wire \ZF~26_combout ;
+wire \RAM[15][2]~regout ;
+wire \B~58_combout ;
+wire \B[2]~reg0_regout ;
+wire \A~84_combout ;
+wire \A~85_combout ;
+wire \B[0]~reg0_regout ;
+wire \DIFF~4_combout ;
+wire \A~71_combout ;
+wire \A~72_combout ;
+wire \A~73_combout ;
+wire \A~74_combout ;
+wire \A[0]~reg0_regout ;
+wire \Add2|adder|result_node|cs_buffer[1]~COUT ;
+wire \Add1|adder|result_node|cs_buffer[1]~COUT ;
+wire \DIFF~5_combout ;
+wire \Add0|adder|result_node|cs_buffer[0]~COUT ;
+wire \A~77_combout ;
+wire \A~78_combout ;
+wire \A~79_combout ;
+wire \A~80_combout ;
+wire \A~81_combout ;
+wire \A[1]~reg0_regout ;
+wire \LessThan0~6_combout ;
+wire \B[3]~reg0_regout ;
+wire \LessThan0~11 ;
+wire \LessThan0~8_combout ;
+wire \Add2|adder|result_node|cs_buffer[2]~COUT ;
+wire \Add1|adder|result_node|cs_buffer[2]~COUT ;
+wire \DIFF~6_combout ;
+wire \Add0|adder|result_node|cs_buffer[1]~COUT ;
+wire \A~86_combout ;
+wire \A~87_combout ;
+wire \A~88_combout ;
+wire \A~89_combout ;
+wire \A[2]~reg0_regout ;
+wire \Add2|adder|result_node|cs_buffer[3]~COUT ;
+wire \Add1|adder|result_node|cs_buffer[3]~COUT ;
+wire \DIFF~7_combout ;
+wire \Add0|adder|result_node|cs_buffer[2]~COUT ;
+wire \A~93_combout ;
+wire \A~94_combout ;
+wire \A~95_combout ;
+wire \A~96_combout ;
+wire \A~97_combout ;
+wire \A[3]~reg0_regout ;
+wire \ZF~25_combout ;
+wire \Equal3~9 ;
+wire \Equal3~6_combout ;
+wire \Equal1~0_combout ;
+wire \ZF~33_combout ;
+wire \B[1]~reg0_regout ;
+wire \Equal15~0_combout ;
+wire \ZF~34_combout ;
+wire \ZF~45 ;
+wire \ZF~37_combout ;
+wire \ZF~reg0_regout ;
+wire \PC_temp~75_combout ;
+wire \SP[1]~reg0_regout ;
+wire \A~68_combout ;
+wire \A~99_combout ;
+wire \Stack~332_combout ;
+wire \Stack~272_combout ;
+wire \Stack[0][2]~regout ;
+wire \SP~36_combout ;
+wire \SP[0]~reg0_regout ;
+wire \Stack[3][2]~regout ;
+wire \Mux1~0_combout ;
+wire \Stack[2][2]~regout ;
+wire \Mux1~1_combout ;
+wire \PC_temp~76_combout ;
+wire \PC_temp[2]~reg0_regout ;
+wire \PC_temp~77_combout ;
+wire \Stack~333_combout ;
+wire \Stack[1][3]~regout ;
+wire \Stack[3][3]~regout ;
+wire \Mux0~0_combout ;
+wire \Stack[2][3]~regout ;
+wire \Mux0~1_combout ;
+wire \PC_temp~78_combout ;
+wire \PC_temp[3]~reg0_regout ;
+wire \IP~17_combout ;
+wire \IP~18_combout ;
+wire \IP[2]~reg0_regout ;
+wire \PC_temp~73_combout ;
+wire \Stack~331_combout ;
+wire \Stack[1][1]~regout ;
+wire \Stack[3][1]~regout ;
+wire \Mux2~0_combout ;
+wire \Stack[2][1]~regout ;
+wire \Mux2~1_combout ;
+wire \PC_temp~74_combout ;
+wire \PC_temp[1]~reg0_regout ;
+wire \Add6~3_combout ;
+wire \IP~16_combout ;
+wire \IP~20_combout ;
+wire \IP[3]~reg0_regout ;
+wire \PC_temp~69_combout ;
+wire \Stack~325_combout ;
+wire \Stack[1][0]~regout ;
+wire \Stack[3][0]~regout ;
+wire \Mux3~0_combout ;
+wire \Stack[2][0]~regout ;
+wire \Mux3~1_combout ;
+wire \PC_temp~70_combout ;
+wire \PC_temp[0]~reg0_regout ;
+wire \Add6~0_combout ;
+wire \IP~14_combout ;
+wire \IP~9_combout ;
+wire \IP[1]~reg0_regout ;
+wire \port_out[0]~20_combout ;
+wire \port_out[0]~reg0_regout ;
+wire \port_out[1]~reg0_regout ;
+wire \port_out[2]~reg0_regout ;
+wire \port_out[3]~reg0_regout ;
+wire \temp~75_combout ;
+wire \temp~76_combout ;
+wire \temp~77_combout ;
+wire \temp~78_combout ;
+wire \temp[0]~reg0_regout ;
+wire \temp~111_combout ;
+wire \temp~150 ;
+wire \temp~115_combout ;
+wire \temp~83_combout ;
+wire \temp~84_combout ;
+wire \temp~85_combout ;
+wire \temp[1]~reg0_regout ;
+wire \temp~88_combout ;
+wire \temp~154 ;
+wire \temp~116_combout ;
+wire \temp~90_combout ;
+wire \temp~92_combout ;
+wire \temp~93_combout ;
+wire \temp[2]~reg0_regout ;
+wire \temp~98_combout ;
+wire \temp~99_combout ;
+wire \temp~101_combout ;
+wire \temp~102_combout ;
+wire \temp[3]~reg0_regout ;
+wire \OF~12_combout ;
+wire \Add0|adder|result_node|cs_buffer[3]~COUT ;
+wire \OF~reg0_regout ;
+wire \SF~3_combout ;
+wire \SF~reg0_regout ;
+wire [3:0] \port_in~dataout ;
+wire [4:0] \Add0|adder|result_node|cs_buffer ;
+wire [3:0] \PC_rtl_0|wysi_counter|counter_cell ;
+wire [4:0] \Add1|adder|result_node|cs_buffer ;
+wire [4:0] \Add1|adder|unreg_res_node ;
+wire [4:0] \Add2|adder|result_node|cs_buffer ;
+wire [4:0] \Add2|adder|unreg_res_node ;
+
+
+// atom is at PIN_126
+flex10ke_io \port_in[0]~I (
+	.datain(gnd),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(\port_in~dataout [0]),
+	.padio(port_in[0]));
+// synopsys translate_off
+defparam \port_in[0]~I .feedback_mode = "from_pin";
+defparam \port_in[0]~I .operation_mode = "input";
+defparam \port_in[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at LC3_A5
+flex10ke_lcell \A~69 (
+// Equation(s):
+// \A~69_combout  = !\IP[2]~reg0_regout  & (\IP[0]~reg0_regout  & \port_in~dataout [0] # !\IP[0]~reg0_regout  & (\B[0]~reg0_regout ))
+
+	.dataa(\port_in~dataout [0]),
+	.datab(\B[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~69_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~69 .clock_enable_mode = "false";
+defparam \A~69 .lut_mask = "00ac";
+defparam \A~69 .operation_mode = "normal";
+defparam \A~69 .output_mode = "comb_only";
+defparam \A~69 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B11
+flex10ke_lcell \Add0|adder|result_node|cs_buffer[0] (
+// Equation(s):
+// \Add0|adder|result_node|cs_buffer [0] = \A[0]~reg0_regout  $ \B[0]~reg0_regout 
+// \Add0|adder|result_node|cs_buffer[0]~COUT  = CARRY(\A[0]~reg0_regout  & \B[0]~reg0_regout )
+
+	.dataa(\A[0]~reg0_regout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add0|adder|result_node|cs_buffer [0]),
+	.regout(),
+	.cout(\Add0|adder|result_node|cs_buffer[0]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add0|adder|result_node|cs_buffer[0] .clock_enable_mode = "false";
+defparam \Add0|adder|result_node|cs_buffer[0] .lut_mask = "6688";
+defparam \Add0|adder|result_node|cs_buffer[0] .operation_mode = "arithmetic";
+defparam \Add0|adder|result_node|cs_buffer[0] .output_mode = "comb_only";
+defparam \Add0|adder|result_node|cs_buffer[0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_A5
+flex10ke_lcell \A~70 (
+// Equation(s):
+// \A~70_combout  = \IP[2]~reg0_regout  & (\A[0]~reg0_regout  $ \IP[0]~reg0_regout ) # !\IP[2]~reg0_regout  & \Add0|adder|result_node|cs_buffer [0] & (!\IP[0]~reg0_regout )
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\Add0|adder|result_node|cs_buffer [0]),
+	.datac(\A[0]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~70_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~70 .clock_enable_mode = "false";
+defparam \A~70 .lut_mask = "0ae4";
+defparam \A~70 .operation_mode = "normal";
+defparam \A~70 .output_mode = "comb_only";
+defparam \A~70 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at PIN_124
+flex10ke_io \port_in[1]~I (
+	.datain(gnd),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(\port_in~dataout [1]),
+	.padio(port_in[1]));
+// synopsys translate_off
+defparam \port_in[1]~I .feedback_mode = "from_pin";
+defparam \port_in[1]~I .operation_mode = "input";
+defparam \port_in[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at LC2_B14
+flex10ke_lcell \A~76 (
+// Equation(s):
+// \A~76_combout  = \IP[0]~reg0_regout  & (\port_in~dataout [1] # \IP[2]~reg0_regout ) # !\IP[0]~reg0_regout  & (\B[1]~reg0_regout  & !\IP[2]~reg0_regout )
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\port_in~dataout [1]),
+	.datac(\B[1]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~76_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~76 .clock_enable_mode = "false";
+defparam \A~76 .lut_mask = "aad8";
+defparam \A~76 .operation_mode = "normal";
+defparam \A~76 .output_mode = "comb_only";
+defparam \A~76 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B16
+flex10ke_lcell \A~83 (
+// Equation(s):
+// \A~83_combout  = \IP[0]~reg0_regout  # !\IP[2]~reg0_regout  # !\RAM[15][2]~regout 
+
+	.dataa(vcc),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\RAM[15][2]~regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~83_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~83 .clock_enable_mode = "false";
+defparam \A~83 .lut_mask = "cfff";
+defparam \A~83 .operation_mode = "normal";
+defparam \A~83 .output_mode = "comb_only";
+defparam \A~83 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B15
+flex10ke_lcell \Add3~0 (
+// Equation(s):
+// \Add3~0_combout  = \A[0]~reg0_regout  & \A[1]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A[0]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add3~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add3~0 .clock_enable_mode = "false";
+defparam \Add3~0 .lut_mask = "f000";
+defparam \Add3~0 .operation_mode = "normal";
+defparam \Add3~0 .output_mode = "comb_only";
+defparam \Add3~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at PIN_56
+flex10ke_io \port_in[3]~I (
+	.datain(gnd),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(\port_in~dataout [3]),
+	.padio(port_in[3]));
+// synopsys translate_off
+defparam \port_in[3]~I .feedback_mode = "from_pin";
+defparam \port_in[3]~I .operation_mode = "input";
+defparam \port_in[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at LC1_B3
+flex10ke_lcell \A~91 (
+// Equation(s):
+// \A~91_combout  = \IP[0]~reg0_regout  & (\port_in~dataout [3] # \IP[2]~reg0_regout ) # !\IP[0]~reg0_regout  & (\B[3]~reg0_regout  & !\IP[2]~reg0_regout )
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\port_in~dataout [3]),
+	.datac(\B[3]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~91_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~91 .clock_enable_mode = "false";
+defparam \A~91 .lut_mask = "aad8";
+defparam \A~91 .operation_mode = "normal";
+defparam \A~91 .output_mode = "comb_only";
+defparam \A~91 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B3
+flex10ke_lcell \A~92 (
+// Equation(s):
+// \A~92_combout  = \A~91_combout  # \IP[2]~reg0_regout  & !\RAM[15][2]~regout 
+
+	.dataa(vcc),
+	.datab(\A~91_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\RAM[15][2]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~92_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~92 .clock_enable_mode = "false";
+defparam \A~92 .lut_mask = "ccfc";
+defparam \A~92 .operation_mode = "normal";
+defparam \A~92 .output_mode = "comb_only";
+defparam \A~92 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B6
+flex10ke_lcell \Add3~1 (
+// Equation(s):
+// \Add3~1_combout  = \A[2]~reg0_regout  & \A[0]~reg0_regout  & \A[1]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(\A[2]~reg0_regout ),
+	.datac(\A[0]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add3~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add3~1 .clock_enable_mode = "false";
+defparam \Add3~1 .lut_mask = "c000";
+defparam \Add3~1 .operation_mode = "normal";
+defparam \Add3~1 .output_mode = "comb_only";
+defparam \Add3~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C19
+flex10ke_lcell \Stack[0][0] (
+// Equation(s):
+// \Stack[0][0]~regout  = DFFEA(\Stack~272_combout  & \Stack~325_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~327_combout , , )
+
+	.dataa(\Stack~327_combout ),
+	.datab(\Stack~272_combout ),
+	.datac(\Stack~325_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[0][0]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[0][0] .clock_enable_mode = "true";
+defparam \Stack[0][0] .lut_mask = "00c0";
+defparam \Stack[0][0] .operation_mode = "normal";
+defparam \Stack[0][0] .output_mode = "reg_only";
+defparam \Stack[0][0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_A5
+flex10ke_lcell \B~56 (
+// Equation(s):
+// \B~56_combout  = \IP[3]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  & \B[0]~reg0_regout  # !\IP[0]~reg0_regout  & (\A[0]~reg0_regout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\A[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~56_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~56 .clock_enable_mode = "false";
+defparam \B~56 .lut_mask = "e5e0";
+defparam \B~56 .operation_mode = "normal";
+defparam \B~56 .output_mode = "comb_only";
+defparam \B~56 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_A4
+flex10ke_lcell \B~57 (
+// Equation(s):
+// \B~57_combout  = \IP[3]~reg0_regout  & (\B~56_combout  & (\B[3]~reg0_regout ) # !\B~56_combout  & \Mux3~1_combout ) # !\IP[3]~reg0_regout  & (\B~56_combout )
+
+	.dataa(\Mux3~1_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\B~56_combout ),
+	.datad(\B[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~57_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~57 .clock_enable_mode = "false";
+defparam \B~57 .lut_mask = "f838";
+defparam \B~57 .operation_mode = "normal";
+defparam \B~57 .output_mode = "comb_only";
+defparam \B~57 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C19
+flex10ke_lcell \Stack[0][1] (
+// Equation(s):
+// \Stack[0][1]~regout  = DFFEA(\Stack~331_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~327_combout , , )
+
+	.dataa(\Stack~327_combout ),
+	.datab(\Stack~331_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[0][1]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[0][1] .clock_enable_mode = "true";
+defparam \Stack[0][1] .lut_mask = "00c0";
+defparam \Stack[0][1] .operation_mode = "normal";
+defparam \Stack[0][1] .output_mode = "reg_only";
+defparam \Stack[0][1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_A4
+flex10ke_lcell \B~60 (
+// Equation(s):
+// \B~60_combout  = \IP[3]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  & \B[1]~reg0_regout  # !\IP[0]~reg0_regout  & (\A[1]~reg0_regout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\B[1]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~60_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~60 .clock_enable_mode = "false";
+defparam \B~60 .lut_mask = "e5e0";
+defparam \B~60 .operation_mode = "normal";
+defparam \B~60 .output_mode = "comb_only";
+defparam \B~60 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_A4
+flex10ke_lcell \B~61 (
+// Equation(s):
+// \B~61_combout  = \IP[3]~reg0_regout  & (\B~60_combout  & (\B[0]~reg0_regout ) # !\B~60_combout  & \Mux2~1_combout ) # !\IP[3]~reg0_regout  & (\B~60_combout )
+
+	.dataa(\Mux2~1_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\B~60_combout ),
+	.datad(\B[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~61_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~61 .clock_enable_mode = "false";
+defparam \B~61 .lut_mask = "f838";
+defparam \B~61 .operation_mode = "normal";
+defparam \B~61 .output_mode = "comb_only";
+defparam \B~61 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C19
+flex10ke_lcell \Stack[1][2] (
+// Equation(s):
+// \Stack[1][2]~regout  = DFFEA(\Stack~332_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~328_combout , , )
+
+	.dataa(\Stack~328_combout ),
+	.datab(\Stack~332_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[1][2]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[1][2] .clock_enable_mode = "true";
+defparam \Stack[1][2] .lut_mask = "00c0";
+defparam \Stack[1][2] .operation_mode = "normal";
+defparam \Stack[1][2] .output_mode = "reg_only";
+defparam \Stack[1][2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B5
+flex10ke_lcell \B~63 (
+// Equation(s):
+// \B~63_combout  = \IP[3]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  & \B[2]~reg0_regout  # !\IP[0]~reg0_regout  & (\A[2]~reg0_regout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\B[2]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\A[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~63_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~63 .clock_enable_mode = "false";
+defparam \B~63 .lut_mask = "e5e0";
+defparam \B~63 .operation_mode = "normal";
+defparam \B~63 .output_mode = "comb_only";
+defparam \B~63 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B5
+flex10ke_lcell \B~64 (
+// Equation(s):
+// \B~64_combout  = \IP[3]~reg0_regout  & (\B~63_combout  & (\B[1]~reg0_regout ) # !\B~63_combout  & \Mux1~1_combout ) # !\IP[3]~reg0_regout  & (\B~63_combout )
+
+	.dataa(\Mux1~1_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\B~63_combout ),
+	.datad(\B[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~64_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~64 .clock_enable_mode = "false";
+defparam \B~64 .lut_mask = "f838";
+defparam \B~64 .operation_mode = "normal";
+defparam \B~64 .output_mode = "comb_only";
+defparam \B~64 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C19
+flex10ke_lcell \Stack[0][3] (
+// Equation(s):
+// \Stack[0][3]~regout  = DFFEA(\Stack~333_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~327_combout , , )
+
+	.dataa(\Stack~327_combout ),
+	.datab(\Stack~333_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[0][3]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[0][3] .clock_enable_mode = "true";
+defparam \Stack[0][3] .lut_mask = "00c0";
+defparam \Stack[0][3] .operation_mode = "normal";
+defparam \Stack[0][3] .output_mode = "reg_only";
+defparam \Stack[0][3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_A4
+flex10ke_lcell \B~66 (
+// Equation(s):
+// \B~66_combout  = \IP[3]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  & \B[3]~reg0_regout  # !\IP[0]~reg0_regout  & (\A[3]~reg0_regout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\B[3]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~66_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~66 .clock_enable_mode = "false";
+defparam \B~66 .lut_mask = "e5e0";
+defparam \B~66 .operation_mode = "normal";
+defparam \B~66 .output_mode = "comb_only";
+defparam \B~66 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_A4
+flex10ke_lcell \B~67 (
+// Equation(s):
+// \B~67_combout  = \IP[3]~reg0_regout  & (\B~66_combout  & (\B[2]~reg0_regout ) # !\B~66_combout  & \Mux0~1_combout ) # !\IP[3]~reg0_regout  & (\B~66_combout )
+
+	.dataa(\Mux0~1_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\B~66_combout ),
+	.datad(\B[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~67_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~67 .clock_enable_mode = "false";
+defparam \B~67 .lut_mask = "f838";
+defparam \B~67 .operation_mode = "normal";
+defparam \B~67 .output_mode = "comb_only";
+defparam \B~67 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C8
+flex10ke_lcell \temp~72 (
+// Equation(s):
+// \temp~72_combout  = \IP[0]~reg0_regout  & \B[3]~reg0_regout  & \IP[3]~reg0_regout  # !\IP[0]~reg0_regout  & (!\IP[3]~reg0_regout  & \A[0]~reg0_regout )
+
+	.dataa(\B[3]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~72_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~72 .clock_enable_mode = "false";
+defparam \temp~72 .lut_mask = "8380";
+defparam \temp~72 .operation_mode = "normal";
+defparam \temp~72 .output_mode = "comb_only";
+defparam \temp~72 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C8
+flex10ke_lcell \temp~73 (
+// Equation(s):
+// \temp~73_combout  = \temp~72_combout  # \temp[0]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[3]~reg0_regout )
+
+	.dataa(\temp~72_combout ),
+	.datab(\temp[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~73_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~73 .clock_enable_mode = "false";
+defparam \temp~73 .lut_mask = "aeea";
+defparam \temp~73 .operation_mode = "normal";
+defparam \temp~73 .output_mode = "comb_only";
+defparam \temp~73 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C8
+flex10ke_lcell \temp~74 (
+// Equation(s):
+// \temp~74_combout  = \IP[3]~reg0_regout  & \temp[0]~reg0_regout  # !\IP[3]~reg0_regout  & (\Add0|adder|result_node|cs_buffer [0] & !\IP[0]~reg0_regout )
+
+	.dataa(\temp[0]~reg0_regout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\Add0|adder|result_node|cs_buffer [0]),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~74_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~74 .clock_enable_mode = "false";
+defparam \temp~74 .lut_mask = "88b8";
+defparam \temp~74 .operation_mode = "normal";
+defparam \temp~74 .output_mode = "comb_only";
+defparam \temp~74 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B10
+flex10ke_lcell \temp~80 (
+// Equation(s):
+// \temp~80_combout  = \IP[0]~reg0_regout  & \B[0]~reg0_regout  & \IP[3]~reg0_regout  # !\IP[0]~reg0_regout  & (!\IP[3]~reg0_regout  & \A[1]~reg0_regout )
+
+	.dataa(\B[0]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~80_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~80 .clock_enable_mode = "false";
+defparam \temp~80 .lut_mask = "8380";
+defparam \temp~80 .operation_mode = "normal";
+defparam \temp~80 .output_mode = "comb_only";
+defparam \temp~80 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B10
+flex10ke_lcell \temp~81 (
+// Equation(s):
+// \temp~81_combout  = \temp~80_combout  # \temp[1]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[3]~reg0_regout )
+
+	.dataa(\temp~80_combout ),
+	.datab(\temp[1]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~81_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~81 .clock_enable_mode = "false";
+defparam \temp~81 .lut_mask = "aeea";
+defparam \temp~81 .operation_mode = "normal";
+defparam \temp~81 .output_mode = "comb_only";
+defparam \temp~81 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B8
+flex10ke_lcell \temp~87 (
+// Equation(s):
+// \temp~87_combout  = \IP[0]~reg0_regout  & \B[1]~reg0_regout  & \IP[3]~reg0_regout  # !\IP[0]~reg0_regout  & (!\IP[3]~reg0_regout  & \A[2]~reg0_regout )
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~87_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~87 .clock_enable_mode = "false";
+defparam \temp~87 .lut_mask = "8380";
+defparam \temp~87 .operation_mode = "normal";
+defparam \temp~87 .output_mode = "comb_only";
+defparam \temp~87 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B8
+flex10ke_lcell \temp~91 (
+// Equation(s):
+// \temp~91_combout  = \A[2]~reg0_regout  & \IP[3]~reg0_regout  & !\RAM[15][2]~regout  & !\IP[0]~reg0_regout 
+
+	.dataa(\A[2]~reg0_regout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\RAM[15][2]~regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~91_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~91 .clock_enable_mode = "false";
+defparam \temp~91 .lut_mask = "0008";
+defparam \temp~91 .operation_mode = "normal";
+defparam \temp~91 .output_mode = "comb_only";
+defparam \temp~91 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B5
+flex10ke_lcell \temp~95 (
+// Equation(s):
+// \temp~95_combout  = \IP[0]~reg0_regout  & \B[2]~reg0_regout  & \IP[3]~reg0_regout  # !\IP[0]~reg0_regout  & (!\IP[3]~reg0_regout  & \A[3]~reg0_regout )
+
+	.dataa(\B[2]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~95_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~95 .clock_enable_mode = "false";
+defparam \temp~95 .lut_mask = "8380";
+defparam \temp~95 .operation_mode = "normal";
+defparam \temp~95 .output_mode = "comb_only";
+defparam \temp~95 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B4
+flex10ke_lcell \temp~96 (
+// Equation(s):
+// \temp~96_combout  = \temp~95_combout  # \temp[3]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[3]~reg0_regout )
+
+	.dataa(\temp~95_combout ),
+	.datab(\temp[3]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~96_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~96 .clock_enable_mode = "false";
+defparam \temp~96 .lut_mask = "aeea";
+defparam \temp~96 .operation_mode = "normal";
+defparam \temp~96 .output_mode = "comb_only";
+defparam \temp~96 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B4
+flex10ke_lcell \temp~97 (
+// Equation(s):
+// \temp~97_combout  = \IP[3]~reg0_regout  & \temp[3]~reg0_regout  # !\IP[3]~reg0_regout  & (\Add0|adder|result_node|cs_buffer [3] & !\IP[0]~reg0_regout )
+
+	.dataa(\temp[3]~reg0_regout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\Add0|adder|result_node|cs_buffer [3]),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~97_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~97 .clock_enable_mode = "false";
+defparam \temp~97 .lut_mask = "88b8";
+defparam \temp~97 .operation_mode = "normal";
+defparam \temp~97 .output_mode = "comb_only";
+defparam \temp~97 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B4
+flex10ke_lcell \temp~100 (
+// Equation(s):
+// \temp~100_combout  = \A[3]~reg0_regout  & \IP[3]~reg0_regout  & !\RAM[15][2]~regout  & !\IP[0]~reg0_regout 
+
+	.dataa(\A[3]~reg0_regout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\RAM[15][2]~regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~100_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~100 .clock_enable_mode = "false";
+defparam \temp~100 .lut_mask = "0008";
+defparam \temp~100 .operation_mode = "normal";
+defparam \temp~100 .output_mode = "comb_only";
+defparam \temp~100 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B15
+flex10ke_lcell \IP~8 (
+// Equation(s):
+// \IP~8_combout  = !\HLT~reg0_regout  & !\RAM[15][2]~regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\HLT~reg0_regout ),
+	.datad(\RAM[15][2]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~8_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~8 .clock_enable_mode = "false";
+defparam \IP~8 .lut_mask = "000f";
+defparam \IP~8 .operation_mode = "normal";
+defparam \IP~8 .output_mode = "comb_only";
+defparam \IP~8 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C14
+flex10ke_lcell \OF~11 (
+// Equation(s):
+// \OF~11_combout  = !\IP[0]~reg0_regout  & !\IP[2]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\OF~11_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \OF~11 .clock_enable_mode = "false";
+defparam \OF~11 .lut_mask = "000f";
+defparam \OF~11 .operation_mode = "normal";
+defparam \OF~11 .output_mode = "comb_only";
+defparam \OF~11 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C14
+flex10ke_lcell \Equal0~0 (
+// Equation(s):
+// \Equal0~0_combout  = \IP[0]~reg0_regout  & \IP[1]~reg0_regout  & \IP[2]~reg0_regout  & \IP[3]~reg0_regout 
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal0~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Equal0~0 .clock_enable_mode = "false";
+defparam \Equal0~0 .lut_mask = "8000";
+defparam \Equal0~0 .operation_mode = "normal";
+defparam \Equal0~0 .output_mode = "comb_only";
+defparam \Equal0~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B20
+flex10ke_lcell \PC_temp~71 (
+// Equation(s):
+// \PC_temp~71_combout  = \IP[1]~reg0_regout  # !\IP[2]~reg0_regout  & \IP[0]~reg0_regout  # !\IP[3]~reg0_regout 
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~71_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~71 .clock_enable_mode = "false";
+defparam \PC_temp~71 .lut_mask = "f7f5";
+defparam \PC_temp~71 .operation_mode = "normal";
+defparam \PC_temp~71 .output_mode = "comb_only";
+defparam \PC_temp~71 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B20
+flex10ke_lcell \PC_temp[0]~72 (
+// Equation(s):
+// \PC_temp[0]~72_combout  = !\HLT~reg0_regout  & !\PC_temp~71_combout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\HLT~reg0_regout ),
+	.datad(\PC_temp~71_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp[0]~72_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[0]~72 .clock_enable_mode = "false";
+defparam \PC_temp[0]~72 .lut_mask = "000f";
+defparam \PC_temp[0]~72 .operation_mode = "normal";
+defparam \PC_temp[0]~72 .output_mode = "comb_only";
+defparam \PC_temp[0]~72 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B12
+flex10ke_lcell \ZF~30 (
+// Equation(s):
+// \ZF~30_combout  = \IP[3]~reg0_regout  & (\IP[2]~reg0_regout  & \IP[0]~reg0_regout  # !\IP[1]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[2]~reg0_regout  # \IP[1]~reg0_regout )
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~30_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~30 .clock_enable_mode = "false";
+defparam \ZF~30 .lut_mask = "de5e";
+defparam \ZF~30 .operation_mode = "normal";
+defparam \ZF~30 .output_mode = "comb_only";
+defparam \ZF~30 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B12
+flex10ke_lcell \ZF~31 (
+// Equation(s):
+// \ZF~31_combout  = !\HLT~reg0_regout  & !\ZF~30_combout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\HLT~reg0_regout ),
+	.datad(\ZF~30_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~31_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~31 .clock_enable_mode = "false";
+defparam \ZF~31 .lut_mask = "000f";
+defparam \ZF~31 .operation_mode = "normal";
+defparam \ZF~31 .output_mode = "comb_only";
+defparam \ZF~31 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B5
+flex10ke_lcell \LessThan0~5 (
+// Equation(s):
+// \LessThan0~5_combout  = \A[3]~reg0_regout  $ \B[3]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A[3]~reg0_regout ),
+	.datad(\B[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~5_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \LessThan0~5 .clock_enable_mode = "false";
+defparam \LessThan0~5 .lut_mask = "0ff0";
+defparam \LessThan0~5 .operation_mode = "normal";
+defparam \LessThan0~5 .output_mode = "comb_only";
+defparam \LessThan0~5 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C18
+flex10ke_lcell \Stack~326 (
+// Equation(s):
+// \Stack~326_combout  = \IP[3]~reg0_regout  & !\IP[1]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[2]~reg0_regout )
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~326_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~326 .clock_enable_mode = "false";
+defparam \Stack~326 .lut_mask = "0028";
+defparam \Stack~326 .operation_mode = "normal";
+defparam \Stack~326 .output_mode = "comb_only";
+defparam \Stack~326 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C18
+flex10ke_lcell \Stack~327 (
+// Equation(s):
+// \Stack~327_combout  = \HLT~reg0_regout  # \Stack~326_combout  & !\SP[1]~reg0_regout  & !\SP[0]~reg0_regout 
+
+	.dataa(\HLT~reg0_regout ),
+	.datab(\Stack~326_combout ),
+	.datac(\SP[1]~reg0_regout ),
+	.datad(\SP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~327_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~327 .clock_enable_mode = "false";
+defparam \Stack~327 .lut_mask = "aaae";
+defparam \Stack~327 .operation_mode = "normal";
+defparam \Stack~327 .output_mode = "comb_only";
+defparam \Stack~327 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C18
+flex10ke_lcell \Stack~328 (
+// Equation(s):
+// \Stack~328_combout  = \HLT~reg0_regout  # \SP[0]~reg0_regout  & \Stack~326_combout  & !\SP[1]~reg0_regout 
+
+	.dataa(\HLT~reg0_regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\Stack~326_combout ),
+	.datad(\SP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~328_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~328 .clock_enable_mode = "false";
+defparam \Stack~328 .lut_mask = "aaea";
+defparam \Stack~328 .operation_mode = "normal";
+defparam \Stack~328 .output_mode = "comb_only";
+defparam \Stack~328 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C18
+flex10ke_lcell \Stack~329 (
+// Equation(s):
+// \Stack~329_combout  = \HLT~reg0_regout  # \SP[1]~reg0_regout  & \SP[0]~reg0_regout  & \Stack~326_combout 
+
+	.dataa(\HLT~reg0_regout ),
+	.datab(\SP[1]~reg0_regout ),
+	.datac(\SP[0]~reg0_regout ),
+	.datad(\Stack~326_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~329_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~329 .clock_enable_mode = "false";
+defparam \Stack~329 .lut_mask = "eaaa";
+defparam \Stack~329 .operation_mode = "normal";
+defparam \Stack~329 .output_mode = "comb_only";
+defparam \Stack~329 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C18
+flex10ke_lcell \Stack~330 (
+// Equation(s):
+// \Stack~330_combout  = \HLT~reg0_regout  # \SP[1]~reg0_regout  & \Stack~326_combout  & !\SP[0]~reg0_regout 
+
+	.dataa(\HLT~reg0_regout ),
+	.datab(\SP[1]~reg0_regout ),
+	.datac(\Stack~326_combout ),
+	.datad(\SP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~330_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~330 .clock_enable_mode = "false";
+defparam \Stack~330 .lut_mask = "aaea";
+defparam \Stack~330 .operation_mode = "normal";
+defparam \Stack~330 .output_mode = "comb_only";
+defparam \Stack~330 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C17
+flex10ke_lcell \Equal13~0 (
+// Equation(s):
+// \Equal13~0_combout  = !\Mux3~1_combout  & !\Mux2~1_combout  & !\Mux1~1_combout  & !\Mux0~1_combout 
+
+	.dataa(\Mux3~1_combout ),
+	.datab(\Mux2~1_combout ),
+	.datac(\Mux1~1_combout ),
+	.datad(\Mux0~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal13~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Equal13~0 .clock_enable_mode = "false";
+defparam \Equal13~0 .lut_mask = "0001";
+defparam \Equal13~0 .operation_mode = "normal";
+defparam \Equal13~0 .output_mode = "comb_only";
+defparam \Equal13~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C14
+flex10ke_lcell \SP~34 (
+// Equation(s):
+// \SP~34_combout  = \SP[1]~reg0_regout  $ (\SP[0]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[2]~reg0_regout ) # !\SP[0]~reg0_regout  & \IP[0]~reg0_regout  & \IP[2]~reg0_regout )
+
+	.dataa(\SP[1]~reg0_regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\SP~34_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP~34 .clock_enable_mode = "false";
+defparam \SP~34 .lut_mask = "966a";
+defparam \SP~34 .operation_mode = "normal";
+defparam \SP~34 .output_mode = "comb_only";
+defparam \SP~34 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C14
+flex10ke_lcell \SP~35 (
+// Equation(s):
+// \SP~35_combout  = \SP[1]~reg0_regout  $ (!\SP[0]~reg0_regout  & !\IP[0]~reg0_regout  & !\IP[2]~reg0_regout )
+
+	.dataa(\SP[1]~reg0_regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\SP~35_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP~35 .clock_enable_mode = "false";
+defparam \SP~35 .lut_mask = "aaa9";
+defparam \SP~35 .operation_mode = "normal";
+defparam \SP~35 .output_mode = "comb_only";
+defparam \SP~35 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C14
+flex10ke_lcell \SP~39 (
+// Equation(s):
+// \SP~39_combout  = \IP[1]~reg0_regout  & (\SP~35_combout ) # !\IP[1]~reg0_regout  & \SP~34_combout 
+
+	.dataa(vcc),
+	.datab(\SP~34_combout ),
+	.datac(\SP~35_combout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\SP~39_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP~39 .clock_enable_mode = "false";
+defparam \SP~39 .lut_mask = "f0cc";
+defparam \SP~39 .operation_mode = "normal";
+defparam \SP~39 .output_mode = "comb_only";
+defparam \SP~39 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at PIN_55
+flex10ke_io \clock~I (
+	.datain(gnd),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(\clock~dataout ),
+	.padio(clock));
+// synopsys translate_off
+defparam \clock~I .feedback_mode = "from_pin";
+defparam \clock~I .operation_mode = "input";
+defparam \clock~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at LC8_C14
+flex10ke_lcell \HLT~reg0 (
+// Equation(s):
+// \HLT~reg0_regout  = DFFEA(VCC, GLOBAL(\clock~dataout ), , , \Equal0~0_combout , , )
+
+	.dataa(\Equal0~0_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\HLT~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \HLT~reg0 .clock_enable_mode = "true";
+defparam \HLT~reg0 .lut_mask = "ffff";
+defparam \HLT~reg0 .operation_mode = "normal";
+defparam \HLT~reg0 .output_mode = "reg_only";
+defparam \HLT~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B22
+flex10ke_lcell \HLT~reg0_wirecell (
+// Equation(s):
+// \HLT~reg0_wirecell_combout  = !\HLT~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\HLT~reg0_wirecell_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \HLT~reg0_wirecell .clock_enable_mode = "false";
+defparam \HLT~reg0_wirecell .lut_mask = "00ff";
+defparam \HLT~reg0_wirecell .operation_mode = "normal";
+defparam \HLT~reg0_wirecell .output_mode = "comb_only";
+defparam \HLT~reg0_wirecell .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B13
+flex10ke_lcell \IP~10 (
+// Equation(s):
+// \IP~10_combout  = \IP~9_combout  & (\PC_temp[0]~reg0_regout  $ (\PC_temp[2]~reg0_regout  # !\PC_temp[1]~reg0_regout ))
+
+	.dataa(\IP~9_combout ),
+	.datab(\PC_temp[1]~reg0_regout ),
+	.datac(\PC_temp[2]~reg0_regout ),
+	.datad(\PC_temp[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~10_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~10 .clock_enable_mode = "false";
+defparam \IP~10 .lut_mask = "08a2";
+defparam \IP~10 .operation_mode = "normal";
+defparam \IP~10 .output_mode = "comb_only";
+defparam \IP~10 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B13
+flex10ke_lcell \Add6~1 (
+// Equation(s):
+// \Add6~1_combout  = \PC_temp[2]~reg0_regout  $ (\PC_temp[0]~reg0_regout  & \PC_temp[1]~reg0_regout )
+
+	.dataa(vcc),
+	.datab(\PC_temp[2]~reg0_regout ),
+	.datac(\PC_temp[0]~reg0_regout ),
+	.datad(\PC_temp[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add6~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add6~1 .clock_enable_mode = "false";
+defparam \Add6~1 .lut_mask = "3ccc";
+defparam \Add6~1 .operation_mode = "normal";
+defparam \Add6~1 .output_mode = "comb_only";
+defparam \Add6~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B18
+flex10ke_lcell \always1~3 (
+// Equation(s):
+// \always1~3_combout  = !\IP[2]~reg0_regout  & (\IP[0]~reg0_regout  # !\ZF~reg0_regout ) # !\Stack~272_combout 
+
+	.dataa(\Stack~272_combout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\ZF~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\always1~3_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \always1~3 .clock_enable_mode = "false";
+defparam \always1~3 .lut_mask = "7757";
+defparam \always1~3 .operation_mode = "normal";
+defparam \always1~3 .output_mode = "comb_only";
+defparam \always1~3 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B24
+flex10ke_lcell \PC_temp[0]~reg0_wirecell (
+// Equation(s):
+// \PC_temp[0]~reg0_wirecell_combout  = !\PC_temp[0]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\PC_temp[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp[0]~reg0_wirecell_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[0]~reg0_wirecell .clock_enable_mode = "false";
+defparam \PC_temp[0]~reg0_wirecell .lut_mask = "00ff";
+defparam \PC_temp[0]~reg0_wirecell .operation_mode = "normal";
+defparam \PC_temp[0]~reg0_wirecell .output_mode = "comb_only";
+defparam \PC_temp[0]~reg0_wirecell .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B17
+flex10ke_lcell \PC_rtl_0|wysi_counter|counter_cell[0] (
+// Equation(s):
+// \PC_rtl_0|wysi_counter|counter_cell [0] = DFFEA(((!\PC_rtl_0|wysi_counter|counter_cell [0] & \always1~3_combout ) # (\PC_temp[0]~reg0_wirecell_combout  & !\always1~3_combout )) & \HLT~reg0_wirecell_combout , !GLOBAL(\clock~dataout ), , , , , )
+// \PC_rtl_0|wysi_counter|counter_cell[0]~COUT  = CARRY(\PC_rtl_0|wysi_counter|counter_cell [0])
+
+	.dataa(vcc),
+	.datab(\HLT~reg0_wirecell_combout ),
+	.datac(\PC_temp[0]~reg0_wirecell_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.cout(\PC_rtl_0|wysi_counter|counter_cell[0]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \PC_rtl_0|wysi_counter|counter_cell[0] .clock_enable_mode = "false";
+defparam \PC_rtl_0|wysi_counter|counter_cell[0] .lut_mask = "33aa";
+defparam \PC_rtl_0|wysi_counter|counter_cell[0] .operation_mode = "clrb_cntr";
+defparam \PC_rtl_0|wysi_counter|counter_cell[0] .output_mode = "reg_only";
+defparam \PC_rtl_0|wysi_counter|counter_cell[0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B17
+flex10ke_lcell \PC_rtl_0|wysi_counter|counter_cell[1] (
+// Equation(s):
+// \PC_rtl_0|wysi_counter|counter_cell [1] = DFFEA(((\PC_rtl_0|wysi_counter|counter_cell [1] $ \PC_rtl_0|wysi_counter|counter_cell[0]~COUT  & \always1~3_combout ) # (\Add6~0_combout  & !\always1~3_combout )) & \HLT~reg0_wirecell_combout , 
+// !GLOBAL(\clock~dataout ), , , , , )
+// \PC_rtl_0|wysi_counter|counter_cell[1]~COUT  = CARRY(\PC_rtl_0|wysi_counter|counter_cell [1] & (\PC_rtl_0|wysi_counter|counter_cell[0]~COUT ))
+
+	.dataa(vcc),
+	.datab(\HLT~reg0_wirecell_combout ),
+	.datac(\Add6~0_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(\PC_rtl_0|wysi_counter|counter_cell[0]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.cout(\PC_rtl_0|wysi_counter|counter_cell[1]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .cin_used = "true";
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .clock_enable_mode = "false";
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .lut_mask = "3ca0";
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .operation_mode = "clrb_cntr";
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .output_mode = "reg_only";
+defparam \PC_rtl_0|wysi_counter|counter_cell[1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B17
+flex10ke_lcell \PC_rtl_0|wysi_counter|counter_cell[2] (
+// Equation(s):
+// \PC_rtl_0|wysi_counter|counter_cell [2] = DFFEA(((\PC_rtl_0|wysi_counter|counter_cell [2] $ \PC_rtl_0|wysi_counter|counter_cell[1]~COUT  & \always1~3_combout ) # (\Add6~1_combout  & !\always1~3_combout )) & \HLT~reg0_wirecell_combout , 
+// !GLOBAL(\clock~dataout ), , , , , )
+// \PC_rtl_0|wysi_counter|counter_cell[2]~COUT  = CARRY(\PC_rtl_0|wysi_counter|counter_cell [2] & (\PC_rtl_0|wysi_counter|counter_cell[1]~COUT ))
+
+	.dataa(vcc),
+	.datab(\HLT~reg0_wirecell_combout ),
+	.datac(\Add6~1_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(\PC_rtl_0|wysi_counter|counter_cell[1]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.cout(\PC_rtl_0|wysi_counter|counter_cell[2]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .cin_used = "true";
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .clock_enable_mode = "false";
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .lut_mask = "3ca0";
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .operation_mode = "clrb_cntr";
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .output_mode = "reg_only";
+defparam \PC_rtl_0|wysi_counter|counter_cell[2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B17
+flex10ke_lcell \IP~11 (
+// Equation(s):
+// \IP~11_combout  = \PC_rtl_0|wysi_counter|counter_cell [0] $ (\PC_rtl_0|wysi_counter|counter_cell [2] # !\PC_rtl_0|wysi_counter|counter_cell [1])
+
+	.dataa(vcc),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.datac(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.datad(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~11_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~11 .clock_enable_mode = "false";
+defparam \IP~11 .lut_mask = "0cf3";
+defparam \IP~11 .operation_mode = "normal";
+defparam \IP~11 .output_mode = "comb_only";
+defparam \IP~11 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B13
+flex10ke_lcell \Add6~2 (
+// Equation(s):
+// \Add6~2_combout  = \PC_temp[3]~reg0_regout  $ (\PC_temp[2]~reg0_regout  & \PC_temp[0]~reg0_regout  & \PC_temp[1]~reg0_regout )
+
+	.dataa(\PC_temp[3]~reg0_regout ),
+	.datab(\PC_temp[2]~reg0_regout ),
+	.datac(\PC_temp[0]~reg0_regout ),
+	.datad(\PC_temp[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add6~2_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add6~2 .clock_enable_mode = "false";
+defparam \Add6~2 .lut_mask = "6aaa";
+defparam \Add6~2 .operation_mode = "normal";
+defparam \Add6~2 .output_mode = "comb_only";
+defparam \Add6~2 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B17
+flex10ke_lcell \PC_rtl_0|wysi_counter|counter_cell[3] (
+// Equation(s):
+// \PC_rtl_0|wysi_counter|counter_cell [3] = DFFEA(((\PC_rtl_0|wysi_counter|counter_cell [3] $ \PC_rtl_0|wysi_counter|counter_cell[2]~COUT  & \always1~3_combout ) # (\Add6~2_combout  & !\always1~3_combout )) & \HLT~reg0_wirecell_combout , 
+// !GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(\HLT~reg0_wirecell_combout ),
+	.datac(\Add6~2_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(\PC_rtl_0|wysi_counter|counter_cell[2]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .cin_used = "true";
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .clock_enable_mode = "false";
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .lut_mask = "3c3c";
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .operation_mode = "clrb_cntr";
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .output_mode = "reg_only";
+defparam \PC_rtl_0|wysi_counter|counter_cell[3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B23
+flex10ke_lcell \IP~12 (
+// Equation(s):
+// \IP~12_combout  = !\PC_rtl_0|wysi_counter|counter_cell [3] & \always1~3_combout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~12_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~12 .clock_enable_mode = "false";
+defparam \IP~12 .lut_mask = "0f00";
+defparam \IP~12 .operation_mode = "normal";
+defparam \IP~12 .output_mode = "comb_only";
+defparam \IP~12 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B13
+flex10ke_lcell \IP[0]~reg0 (
+// Equation(s):
+// \IP[0]~reg0_regout  = DFFEA(\IP~8_combout  & (\IP~10_combout  # \IP~11_combout  & \IP~12_combout ), !GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\IP~8_combout ),
+	.datab(\IP~10_combout ),
+	.datac(\IP~11_combout ),
+	.datad(\IP~12_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\IP[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP[0]~reg0 .clock_enable_mode = "false";
+defparam \IP[0]~reg0 .lut_mask = "a888";
+defparam \IP[0]~reg0 .operation_mode = "normal";
+defparam \IP[0]~reg0 .output_mode = "reg_only";
+defparam \IP[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B12
+flex10ke_lcell \ZF~26 (
+// Equation(s):
+// \ZF~26_combout  = \IP[1]~reg0_regout  & \IP[2]~reg0_regout  & \IP[3]~reg0_regout  & !\IP[0]~reg0_regout 
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~26_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~26 .clock_enable_mode = "false";
+defparam \ZF~26 .lut_mask = "0080";
+defparam \ZF~26 .operation_mode = "normal";
+defparam \ZF~26 .output_mode = "comb_only";
+defparam \ZF~26 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B15
+flex10ke_lcell \RAM[15][2] (
+// Equation(s):
+// \RAM[15][2]~regout  = DFFEA(VCC, GLOBAL(\clock~dataout ), , , \HLT~reg0_regout , , )
+
+	.dataa(\HLT~reg0_regout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\RAM[15][2]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \RAM[15][2] .clock_enable_mode = "true";
+defparam \RAM[15][2] .lut_mask = "ffff";
+defparam \RAM[15][2] .operation_mode = "normal";
+defparam \RAM[15][2] .output_mode = "reg_only";
+defparam \RAM[15][2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at PIN_54
+flex10ke_io \port_in[2]~I (
+	.datain(gnd),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(\port_in~dataout [2]),
+	.padio(port_in[2]));
+// synopsys translate_off
+defparam \port_in[2]~I .feedback_mode = "from_pin";
+defparam \port_in[2]~I .operation_mode = "input";
+defparam \port_in[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at LC1_B2
+flex10ke_lcell \B~58 (
+// Equation(s):
+// \B~58_combout  = \IP[1]~reg0_regout  & !\IP[2]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\B~58_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B~58 .clock_enable_mode = "false";
+defparam \B~58 .lut_mask = "00f0";
+defparam \B~58 .operation_mode = "normal";
+defparam \B~58 .output_mode = "comb_only";
+defparam \B~58 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B5
+flex10ke_lcell \B[2]~reg0 (
+// Equation(s):
+// \B[2]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\B~58_combout  & \B~64_combout  # !\B~58_combout  & (\B[2]~reg0_regout )), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\B~64_combout ),
+	.datab(\B[2]~reg0_regout ),
+	.datac(\B~58_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\B[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B[2]~reg0 .clock_enable_mode = "false";
+defparam \B[2]~reg0 .lut_mask = "00ac";
+defparam \B[2]~reg0 .operation_mode = "normal";
+defparam \B[2]~reg0 .output_mode = "reg_only";
+defparam \B[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B16
+flex10ke_lcell \A~84 (
+// Equation(s):
+// \A~84_combout  = \IP[0]~reg0_regout  & (\port_in~dataout [2] # \IP[2]~reg0_regout ) # !\IP[0]~reg0_regout  & (\B[2]~reg0_regout  & !\IP[2]~reg0_regout )
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\port_in~dataout [2]),
+	.datac(\B[2]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~84_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~84 .clock_enable_mode = "false";
+defparam \A~84 .lut_mask = "aad8";
+defparam \A~84 .operation_mode = "normal";
+defparam \A~84 .output_mode = "comb_only";
+defparam \A~84 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B16
+flex10ke_lcell \A~85 (
+// Equation(s):
+// \A~85_combout  = \A~84_combout  # \IP[2]~reg0_regout  & !\RAM[15][2]~regout 
+
+	.dataa(vcc),
+	.datab(\A~84_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\RAM[15][2]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~85_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~85 .clock_enable_mode = "false";
+defparam \A~85 .lut_mask = "ccfc";
+defparam \A~85 .operation_mode = "normal";
+defparam \A~85 .output_mode = "comb_only";
+defparam \A~85 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_A4
+flex10ke_lcell \B[0]~reg0 (
+// Equation(s):
+// \B[0]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\B~58_combout  & \B~57_combout  # !\B~58_combout  & (\B[0]~reg0_regout )), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\B~57_combout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(\B~58_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\B[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B[0]~reg0 .clock_enable_mode = "false";
+defparam \B[0]~reg0 .lut_mask = "00ac";
+defparam \B[0]~reg0 .operation_mode = "normal";
+defparam \B[0]~reg0 .output_mode = "reg_only";
+defparam \B[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B6
+flex10ke_lcell \Add1|adder|result_node|cs_buffer[1] (
+// Equation(s):
+// \Add1|adder|result_node|cs_buffer [1] = \A[0]~reg0_regout  $ \B[0]~reg0_regout 
+// \Add1|adder|result_node|cs_buffer[1]~COUT  = CARRY(\A[0]~reg0_regout  # !\B[0]~reg0_regout )
+
+	.dataa(\A[0]~reg0_regout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add1|adder|result_node|cs_buffer [1]),
+	.regout(),
+	.cout(\Add1|adder|result_node|cs_buffer[1]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add1|adder|result_node|cs_buffer[1] .clock_enable_mode = "false";
+defparam \Add1|adder|result_node|cs_buffer[1] .lut_mask = "66bb";
+defparam \Add1|adder|result_node|cs_buffer[1] .operation_mode = "arithmetic";
+defparam \Add1|adder|result_node|cs_buffer[1] .output_mode = "comb_only";
+defparam \Add1|adder|result_node|cs_buffer[1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B7
+flex10ke_lcell \Add2|adder|result_node|cs_buffer[1] (
+// Equation(s):
+// \Add2|adder|result_node|cs_buffer [1] = \A[0]~reg0_regout  $ \B[0]~reg0_regout 
+// \Add2|adder|result_node|cs_buffer[1]~COUT  = CARRY(\B[0]~reg0_regout  # !\A[0]~reg0_regout )
+
+	.dataa(\A[0]~reg0_regout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add2|adder|result_node|cs_buffer [1]),
+	.regout(),
+	.cout(\Add2|adder|result_node|cs_buffer[1]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add2|adder|result_node|cs_buffer[1] .clock_enable_mode = "false";
+defparam \Add2|adder|result_node|cs_buffer[1] .lut_mask = "66dd";
+defparam \Add2|adder|result_node|cs_buffer[1] .operation_mode = "arithmetic";
+defparam \Add2|adder|result_node|cs_buffer[1] .output_mode = "comb_only";
+defparam \Add2|adder|result_node|cs_buffer[1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B6
+flex10ke_lcell \DIFF~4 (
+// Equation(s):
+// \DIFF~4_combout  = \LessThan0~8_combout  & \Add1|adder|result_node|cs_buffer [1] # !\LessThan0~8_combout  & (\Add2|adder|result_node|cs_buffer [1])
+
+	.dataa(vcc),
+	.datab(\Add1|adder|result_node|cs_buffer [1]),
+	.datac(\Add2|adder|result_node|cs_buffer [1]),
+	.datad(\LessThan0~8_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\DIFF~4_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \DIFF~4 .clock_enable_mode = "false";
+defparam \DIFF~4 .lut_mask = "ccf0";
+defparam \DIFF~4 .operation_mode = "normal";
+defparam \DIFF~4 .output_mode = "comb_only";
+defparam \DIFF~4 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_A5
+flex10ke_lcell \A~71 (
+// Equation(s):
+// \A~71_combout  = \A~70_combout  # \DIFF~4_combout  & \IP[0]~reg0_regout  & !\IP[2]~reg0_regout 
+
+	.dataa(\A~70_combout ),
+	.datab(\DIFF~4_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~71_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~71 .clock_enable_mode = "false";
+defparam \A~71 .lut_mask = "aaea";
+defparam \A~71 .operation_mode = "normal";
+defparam \A~71 .output_mode = "comb_only";
+defparam \A~71 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_A5
+flex10ke_lcell \A~72 (
+// Equation(s):
+// \A~72_combout  = \IP[1]~reg0_regout  & (\IP[3]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[3]~reg0_regout  & \A[0]~reg0_regout  # !\IP[3]~reg0_regout  & (\A~71_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\A[0]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A~71_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~72_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~72 .clock_enable_mode = "false";
+defparam \A~72 .lut_mask = "e5e0";
+defparam \A~72 .operation_mode = "normal";
+defparam \A~72 .output_mode = "comb_only";
+defparam \A~72 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_A5
+flex10ke_lcell \A~73 (
+// Equation(s):
+// \A~73_combout  = \A[0]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[2]~reg0_regout )
+
+	.dataa(vcc),
+	.datab(\A[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~73_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~73 .clock_enable_mode = "false";
+defparam \A~73 .lut_mask = "c0cc";
+defparam \A~73 .operation_mode = "normal";
+defparam \A~73 .output_mode = "comb_only";
+defparam \A~73 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_A5
+flex10ke_lcell \A~74 (
+// Equation(s):
+// \A~74_combout  = \IP[1]~reg0_regout  & (\A~72_combout  & (\A~73_combout ) # !\A~72_combout  & \A~69_combout ) # !\IP[1]~reg0_regout  & (\A~72_combout )
+
+	.dataa(\A~69_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\A~72_combout ),
+	.datad(\A~73_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~74_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~74 .clock_enable_mode = "false";
+defparam \A~74 .lut_mask = "f838";
+defparam \A~74 .operation_mode = "normal";
+defparam \A~74 .output_mode = "comb_only";
+defparam \A~74 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_A5
+flex10ke_lcell \A[0]~reg0 (
+// Equation(s):
+// \A[0]~reg0_regout  = DFFEA(\A~74_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A~74_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\A[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A[0]~reg0 .clock_enable_mode = "false";
+defparam \A[0]~reg0 .lut_mask = "00f0";
+defparam \A[0]~reg0 .operation_mode = "normal";
+defparam \A[0]~reg0 .output_mode = "reg_only";
+defparam \A[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B7
+flex10ke_lcell \Add2|adder|result_node|cs_buffer[2] (
+// Equation(s):
+// \Add2|adder|result_node|cs_buffer [2] = \B[1]~reg0_regout  $ \A[1]~reg0_regout  $ \Add2|adder|result_node|cs_buffer[1]~COUT 
+// \Add2|adder|result_node|cs_buffer[2]~COUT  = CARRY(\B[1]~reg0_regout  & (\Add2|adder|result_node|cs_buffer[1]~COUT  # !\A[1]~reg0_regout ) # !\B[1]~reg0_regout  & !\A[1]~reg0_regout  & \Add2|adder|result_node|cs_buffer[1]~COUT )
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\A[1]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add2|adder|result_node|cs_buffer[1]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add2|adder|result_node|cs_buffer [2]),
+	.regout(),
+	.cout(\Add2|adder|result_node|cs_buffer[2]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add2|adder|result_node|cs_buffer[2] .cin_used = "true";
+defparam \Add2|adder|result_node|cs_buffer[2] .clock_enable_mode = "false";
+defparam \Add2|adder|result_node|cs_buffer[2] .lut_mask = "96b2";
+defparam \Add2|adder|result_node|cs_buffer[2] .operation_mode = "arithmetic";
+defparam \Add2|adder|result_node|cs_buffer[2] .output_mode = "comb_only";
+defparam \Add2|adder|result_node|cs_buffer[2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B6
+flex10ke_lcell \Add1|adder|result_node|cs_buffer[2] (
+// Equation(s):
+// \Add1|adder|result_node|cs_buffer [2] = \B[1]~reg0_regout  $ \A[1]~reg0_regout  $ \Add1|adder|result_node|cs_buffer[1]~COUT 
+// \Add1|adder|result_node|cs_buffer[2]~COUT  = CARRY(\B[1]~reg0_regout  & \A[1]~reg0_regout  & \Add1|adder|result_node|cs_buffer[1]~COUT  # !\B[1]~reg0_regout  & (\A[1]~reg0_regout  # \Add1|adder|result_node|cs_buffer[1]~COUT ))
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\A[1]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add1|adder|result_node|cs_buffer[1]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add1|adder|result_node|cs_buffer [2]),
+	.regout(),
+	.cout(\Add1|adder|result_node|cs_buffer[2]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add1|adder|result_node|cs_buffer[2] .cin_used = "true";
+defparam \Add1|adder|result_node|cs_buffer[2] .clock_enable_mode = "false";
+defparam \Add1|adder|result_node|cs_buffer[2] .lut_mask = "96d4";
+defparam \Add1|adder|result_node|cs_buffer[2] .operation_mode = "arithmetic";
+defparam \Add1|adder|result_node|cs_buffer[2] .output_mode = "comb_only";
+defparam \Add1|adder|result_node|cs_buffer[2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B9
+flex10ke_lcell \DIFF~5 (
+// Equation(s):
+// \DIFF~5_combout  = \LessThan0~8_combout  & (!\Add1|adder|result_node|cs_buffer [2]) # !\LessThan0~8_combout  & !\Add2|adder|result_node|cs_buffer [2]
+
+	.dataa(vcc),
+	.datab(\LessThan0~8_combout ),
+	.datac(\Add2|adder|result_node|cs_buffer [2]),
+	.datad(\Add1|adder|result_node|cs_buffer [2]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\DIFF~5_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \DIFF~5 .clock_enable_mode = "false";
+defparam \DIFF~5 .lut_mask = "03cf";
+defparam \DIFF~5 .operation_mode = "normal";
+defparam \DIFF~5 .output_mode = "comb_only";
+defparam \DIFF~5 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B11
+flex10ke_lcell \Add0|adder|result_node|cs_buffer[1] (
+// Equation(s):
+// \Add0|adder|result_node|cs_buffer [1] = \B[1]~reg0_regout  $ \A[1]~reg0_regout  $ \Add0|adder|result_node|cs_buffer[0]~COUT 
+// \Add0|adder|result_node|cs_buffer[1]~COUT  = CARRY(\B[1]~reg0_regout  & (\A[1]~reg0_regout  # \Add0|adder|result_node|cs_buffer[0]~COUT ) # !\B[1]~reg0_regout  & \A[1]~reg0_regout  & \Add0|adder|result_node|cs_buffer[0]~COUT )
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\A[1]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add0|adder|result_node|cs_buffer[0]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add0|adder|result_node|cs_buffer [1]),
+	.regout(),
+	.cout(\Add0|adder|result_node|cs_buffer[1]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add0|adder|result_node|cs_buffer[1] .cin_used = "true";
+defparam \Add0|adder|result_node|cs_buffer[1] .clock_enable_mode = "false";
+defparam \Add0|adder|result_node|cs_buffer[1] .lut_mask = "96e8";
+defparam \Add0|adder|result_node|cs_buffer[1] .operation_mode = "arithmetic";
+defparam \Add0|adder|result_node|cs_buffer[1] .output_mode = "comb_only";
+defparam \Add0|adder|result_node|cs_buffer[1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B14
+flex10ke_lcell \A~77 (
+// Equation(s):
+// \A~77_combout  = \IP[2]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[2]~reg0_regout  & (\IP[0]~reg0_regout  & \DIFF~5_combout  # !\IP[0]~reg0_regout  & (\Add0|adder|result_node|cs_buffer [1]))
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\DIFF~5_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\Add0|adder|result_node|cs_buffer [1]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~77_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~77 .clock_enable_mode = "false";
+defparam \A~77 .lut_mask = "e5e0";
+defparam \A~77 .operation_mode = "normal";
+defparam \A~77 .output_mode = "comb_only";
+defparam \A~77 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B14
+flex10ke_lcell \A~78 (
+// Equation(s):
+// \A~78_combout  = \IP[2]~reg0_regout  & (\A[1]~reg0_regout  $ (\A[0]~reg0_regout  & \A~77_combout )) # !\IP[2]~reg0_regout  & (\A~77_combout )
+
+	.dataa(\A[0]~reg0_regout ),
+	.datab(\A~77_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~78_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~78 .clock_enable_mode = "false";
+defparam \A~78 .lut_mask = "7c8c";
+defparam \A~78 .operation_mode = "normal";
+defparam \A~78 .output_mode = "comb_only";
+defparam \A~78 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B14
+flex10ke_lcell \A~79 (
+// Equation(s):
+// \A~79_combout  = \IP[1]~reg0_regout  & (\IP[3]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[3]~reg0_regout  & \A[1]~reg0_regout  # !\IP[3]~reg0_regout  & (\A~78_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\A[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A~78_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~79_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~79 .clock_enable_mode = "false";
+defparam \A~79 .lut_mask = "e5e0";
+defparam \A~79 .operation_mode = "normal";
+defparam \A~79 .output_mode = "comb_only";
+defparam \A~79 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B14
+flex10ke_lcell \A~80 (
+// Equation(s):
+// \A~80_combout  = \A[1]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[2]~reg0_regout )
+
+	.dataa(vcc),
+	.datab(\A[1]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~80_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~80 .clock_enable_mode = "false";
+defparam \A~80 .lut_mask = "c0cc";
+defparam \A~80 .operation_mode = "normal";
+defparam \A~80 .output_mode = "comb_only";
+defparam \A~80 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B14
+flex10ke_lcell \A~81 (
+// Equation(s):
+// \A~81_combout  = \IP[1]~reg0_regout  & (\A~79_combout  & (\A~80_combout ) # !\A~79_combout  & \A~76_combout ) # !\IP[1]~reg0_regout  & (\A~79_combout )
+
+	.dataa(\A~76_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\A~79_combout ),
+	.datad(\A~80_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~81_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~81 .clock_enable_mode = "false";
+defparam \A~81 .lut_mask = "f838";
+defparam \A~81 .operation_mode = "normal";
+defparam \A~81 .output_mode = "comb_only";
+defparam \A~81 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B14
+flex10ke_lcell \A[1]~reg0 (
+// Equation(s):
+// \A[1]~reg0_regout  = DFFEA(\A~81_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A~81_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\A[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A[1]~reg0 .clock_enable_mode = "false";
+defparam \A[1]~reg0 .lut_mask = "00f0";
+defparam \A[1]~reg0 .operation_mode = "normal";
+defparam \A[1]~reg0 .output_mode = "reg_only";
+defparam \A[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B5
+flex10ke_lcell \LessThan0~6 (
+// Equation(s):
+// \LessThan0~6_combout  = \B[1]~reg0_regout  & (\B[0]~reg0_regout  & !\A[0]~reg0_regout  # !\A[1]~reg0_regout ) # !\B[1]~reg0_regout  & \B[0]~reg0_regout  & !\A[0]~reg0_regout  & !\A[1]~reg0_regout 
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\B[0]~reg0_regout ),
+	.datac(\A[0]~reg0_regout ),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~6_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \LessThan0~6 .clock_enable_mode = "false";
+defparam \LessThan0~6 .lut_mask = "08ae";
+defparam \LessThan0~6 .operation_mode = "normal";
+defparam \LessThan0~6 .output_mode = "comb_only";
+defparam \LessThan0~6 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_A4
+flex10ke_lcell \B[3]~reg0 (
+// Equation(s):
+// \B[3]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\B~58_combout  & \B~67_combout  # !\B~58_combout  & (\B[3]~reg0_regout )), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\B~67_combout ),
+	.datab(\B[3]~reg0_regout ),
+	.datac(\B~58_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\B[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B[3]~reg0 .clock_enable_mode = "false";
+defparam \B[3]~reg0 .lut_mask = "00ac";
+defparam \B[3]~reg0 .operation_mode = "normal";
+defparam \B[3]~reg0 .output_mode = "reg_only";
+defparam \B[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B5
+flex10ke_lcell \LessThan0~4 (
+// Equation(s):
+// \LessThan0~11  = \A[3]~reg0_regout  & (\A[2]~reg0_regout  # !\B[3]~reg0_regout  # !\B[2]~reg0_regout ) # !\A[3]~reg0_regout  & !\B[3]~reg0_regout  & (\A[2]~reg0_regout  # !\B[2]~reg0_regout )
+
+	.dataa(\A[3]~reg0_regout ),
+	.datab(\A[2]~reg0_regout ),
+	.datac(\B[2]~reg0_regout ),
+	.datad(\B[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~4_combout ),
+	.regout(),
+	.cout(),
+	.cascout(\LessThan0~11 ));
+// synopsys translate_off
+defparam \LessThan0~4 .clock_enable_mode = "false";
+defparam \LessThan0~4 .lut_mask = "8aef";
+defparam \LessThan0~4 .operation_mode = "normal";
+defparam \LessThan0~4 .output_mode = "none";
+defparam \LessThan0~4 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B5
+flex10ke_lcell \LessThan0~8 (
+// Equation(s):
+// \LessThan0~8_combout  = (\LessThan0~5_combout  # \A[2]~reg0_regout  $ \B[2]~reg0_regout  # !\LessThan0~6_combout ) & CASCADE(\LessThan0~11 )
+
+	.dataa(\LessThan0~5_combout ),
+	.datab(\A[2]~reg0_regout ),
+	.datac(\B[2]~reg0_regout ),
+	.datad(\LessThan0~6_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(\LessThan0~11 ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\LessThan0~8_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \LessThan0~8 .clock_enable_mode = "false";
+defparam \LessThan0~8 .lut_mask = "beff";
+defparam \LessThan0~8 .operation_mode = "normal";
+defparam \LessThan0~8 .output_mode = "comb_only";
+defparam \LessThan0~8 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B7
+flex10ke_lcell \Add2|adder|result_node|cs_buffer[3] (
+// Equation(s):
+// \Add2|adder|result_node|cs_buffer [3] = \B[2]~reg0_regout  $ \A[2]~reg0_regout  $ \Add2|adder|result_node|cs_buffer[2]~COUT 
+// \Add2|adder|result_node|cs_buffer[3]~COUT  = CARRY(\B[2]~reg0_regout  & (\Add2|adder|result_node|cs_buffer[2]~COUT  # !\A[2]~reg0_regout ) # !\B[2]~reg0_regout  & !\A[2]~reg0_regout  & \Add2|adder|result_node|cs_buffer[2]~COUT )
+
+	.dataa(\B[2]~reg0_regout ),
+	.datab(\A[2]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add2|adder|result_node|cs_buffer[2]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add2|adder|result_node|cs_buffer [3]),
+	.regout(),
+	.cout(\Add2|adder|result_node|cs_buffer[3]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add2|adder|result_node|cs_buffer[3] .cin_used = "true";
+defparam \Add2|adder|result_node|cs_buffer[3] .clock_enable_mode = "false";
+defparam \Add2|adder|result_node|cs_buffer[3] .lut_mask = "96b2";
+defparam \Add2|adder|result_node|cs_buffer[3] .operation_mode = "arithmetic";
+defparam \Add2|adder|result_node|cs_buffer[3] .output_mode = "comb_only";
+defparam \Add2|adder|result_node|cs_buffer[3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B6
+flex10ke_lcell \Add1|adder|result_node|cs_buffer[3] (
+// Equation(s):
+// \Add1|adder|result_node|cs_buffer [3] = \B[2]~reg0_regout  $ \A[2]~reg0_regout  $ \Add1|adder|result_node|cs_buffer[2]~COUT 
+// \Add1|adder|result_node|cs_buffer[3]~COUT  = CARRY(\B[2]~reg0_regout  & \A[2]~reg0_regout  & \Add1|adder|result_node|cs_buffer[2]~COUT  # !\B[2]~reg0_regout  & (\A[2]~reg0_regout  # \Add1|adder|result_node|cs_buffer[2]~COUT ))
+
+	.dataa(\B[2]~reg0_regout ),
+	.datab(\A[2]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add1|adder|result_node|cs_buffer[2]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add1|adder|result_node|cs_buffer [3]),
+	.regout(),
+	.cout(\Add1|adder|result_node|cs_buffer[3]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add1|adder|result_node|cs_buffer[3] .cin_used = "true";
+defparam \Add1|adder|result_node|cs_buffer[3] .clock_enable_mode = "false";
+defparam \Add1|adder|result_node|cs_buffer[3] .lut_mask = "96d4";
+defparam \Add1|adder|result_node|cs_buffer[3] .operation_mode = "arithmetic";
+defparam \Add1|adder|result_node|cs_buffer[3] .output_mode = "comb_only";
+defparam \Add1|adder|result_node|cs_buffer[3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B9
+flex10ke_lcell \DIFF~6 (
+// Equation(s):
+// \DIFF~6_combout  = \LessThan0~8_combout  & (!\Add1|adder|result_node|cs_buffer [3]) # !\LessThan0~8_combout  & !\Add2|adder|result_node|cs_buffer [3]
+
+	.dataa(vcc),
+	.datab(\LessThan0~8_combout ),
+	.datac(\Add2|adder|result_node|cs_buffer [3]),
+	.datad(\Add1|adder|result_node|cs_buffer [3]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\DIFF~6_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \DIFF~6 .clock_enable_mode = "false";
+defparam \DIFF~6 .lut_mask = "03cf";
+defparam \DIFF~6 .operation_mode = "normal";
+defparam \DIFF~6 .output_mode = "comb_only";
+defparam \DIFF~6 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B11
+flex10ke_lcell \Add0|adder|result_node|cs_buffer[2] (
+// Equation(s):
+// \Add0|adder|result_node|cs_buffer [2] = \B[2]~reg0_regout  $ \A[2]~reg0_regout  $ \Add0|adder|result_node|cs_buffer[1]~COUT 
+// \Add0|adder|result_node|cs_buffer[2]~COUT  = CARRY(\B[2]~reg0_regout  & (\A[2]~reg0_regout  # \Add0|adder|result_node|cs_buffer[1]~COUT ) # !\B[2]~reg0_regout  & \A[2]~reg0_regout  & \Add0|adder|result_node|cs_buffer[1]~COUT )
+
+	.dataa(\B[2]~reg0_regout ),
+	.datab(\A[2]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add0|adder|result_node|cs_buffer[1]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add0|adder|result_node|cs_buffer [2]),
+	.regout(),
+	.cout(\Add0|adder|result_node|cs_buffer[2]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add0|adder|result_node|cs_buffer[2] .cin_used = "true";
+defparam \Add0|adder|result_node|cs_buffer[2] .clock_enable_mode = "false";
+defparam \Add0|adder|result_node|cs_buffer[2] .lut_mask = "96e8";
+defparam \Add0|adder|result_node|cs_buffer[2] .operation_mode = "arithmetic";
+defparam \Add0|adder|result_node|cs_buffer[2] .output_mode = "comb_only";
+defparam \Add0|adder|result_node|cs_buffer[2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B16
+flex10ke_lcell \A~86 (
+// Equation(s):
+// \A~86_combout  = \IP[2]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[2]~reg0_regout  & (\IP[0]~reg0_regout  & \DIFF~6_combout  # !\IP[0]~reg0_regout  & (\Add0|adder|result_node|cs_buffer [2]))
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\DIFF~6_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\Add0|adder|result_node|cs_buffer [2]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~86_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~86 .clock_enable_mode = "false";
+defparam \A~86 .lut_mask = "e5e0";
+defparam \A~86 .operation_mode = "normal";
+defparam \A~86 .output_mode = "comb_only";
+defparam \A~86 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B16
+flex10ke_lcell \A~87 (
+// Equation(s):
+// \A~87_combout  = \IP[2]~reg0_regout  & (\A[2]~reg0_regout  $ (\Add3~0_combout  & \A~86_combout )) # !\IP[2]~reg0_regout  & (\A~86_combout )
+
+	.dataa(\Add3~0_combout ),
+	.datab(\A~86_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\A[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~87_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~87 .clock_enable_mode = "false";
+defparam \A~87 .lut_mask = "7c8c";
+defparam \A~87 .operation_mode = "normal";
+defparam \A~87 .output_mode = "comb_only";
+defparam \A~87 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B16
+flex10ke_lcell \A~88 (
+// Equation(s):
+// \A~88_combout  = \IP[3]~reg0_regout  & (\IP[1]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[1]~reg0_regout  & \A~85_combout  # !\IP[1]~reg0_regout  & (\A~87_combout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\A~85_combout ),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\A~87_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~88_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~88 .clock_enable_mode = "false";
+defparam \A~88 .lut_mask = "e5e0";
+defparam \A~88 .operation_mode = "normal";
+defparam \A~88 .output_mode = "comb_only";
+defparam \A~88 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B16
+flex10ke_lcell \A~89 (
+// Equation(s):
+// \A~89_combout  = \IP[3]~reg0_regout  & \A[2]~reg0_regout  & (\A~83_combout  # !\A~88_combout ) # !\IP[3]~reg0_regout  & (\A~88_combout )
+
+	.dataa(\A~83_combout ),
+	.datab(\A~88_combout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~89_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~89 .clock_enable_mode = "false";
+defparam \A~89 .lut_mask = "bc0c";
+defparam \A~89 .operation_mode = "normal";
+defparam \A~89 .output_mode = "comb_only";
+defparam \A~89 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B16
+flex10ke_lcell \A[2]~reg0 (
+// Equation(s):
+// \A[2]~reg0_regout  = DFFEA(\A~89_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A~89_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\A[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A[2]~reg0 .clock_enable_mode = "false";
+defparam \A[2]~reg0 .lut_mask = "00f0";
+defparam \A[2]~reg0 .operation_mode = "normal";
+defparam \A[2]~reg0 .output_mode = "reg_only";
+defparam \A[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B7
+flex10ke_lcell \Add2|adder|unreg_res_node[4] (
+// Equation(s):
+// \Add2|adder|unreg_res_node [4] = \B[3]~reg0_regout  $ \Add2|adder|result_node|cs_buffer[3]~COUT  $ \A[3]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(\B[3]~reg0_regout ),
+	.datac(vcc),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add2|adder|result_node|cs_buffer[3]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add2|adder|unreg_res_node [4]),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add2|adder|unreg_res_node[4] .cin_used = "true";
+defparam \Add2|adder|unreg_res_node[4] .clock_enable_mode = "false";
+defparam \Add2|adder|unreg_res_node[4] .lut_mask = "c33c";
+defparam \Add2|adder|unreg_res_node[4] .operation_mode = "normal";
+defparam \Add2|adder|unreg_res_node[4] .output_mode = "comb_only";
+defparam \Add2|adder|unreg_res_node[4] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B6
+flex10ke_lcell \Add1|adder|unreg_res_node[4] (
+// Equation(s):
+// \Add1|adder|unreg_res_node [4] = \B[3]~reg0_regout  $ \Add1|adder|result_node|cs_buffer[3]~COUT  $ \A[3]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(\B[3]~reg0_regout ),
+	.datac(vcc),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add1|adder|result_node|cs_buffer[3]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add1|adder|unreg_res_node [4]),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add1|adder|unreg_res_node[4] .cin_used = "true";
+defparam \Add1|adder|unreg_res_node[4] .clock_enable_mode = "false";
+defparam \Add1|adder|unreg_res_node[4] .lut_mask = "c33c";
+defparam \Add1|adder|unreg_res_node[4] .operation_mode = "normal";
+defparam \Add1|adder|unreg_res_node[4] .output_mode = "comb_only";
+defparam \Add1|adder|unreg_res_node[4] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B6
+flex10ke_lcell \DIFF~7 (
+// Equation(s):
+// \DIFF~7_combout  = \LessThan0~8_combout  & (!\Add1|adder|unreg_res_node [4]) # !\LessThan0~8_combout  & !\Add2|adder|unreg_res_node [4]
+
+	.dataa(vcc),
+	.datab(\LessThan0~8_combout ),
+	.datac(\Add2|adder|unreg_res_node [4]),
+	.datad(\Add1|adder|unreg_res_node [4]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\DIFF~7_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \DIFF~7 .clock_enable_mode = "false";
+defparam \DIFF~7 .lut_mask = "03cf";
+defparam \DIFF~7 .operation_mode = "normal";
+defparam \DIFF~7 .output_mode = "comb_only";
+defparam \DIFF~7 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B11
+flex10ke_lcell \Add0|adder|result_node|cs_buffer[3] (
+// Equation(s):
+// \Add0|adder|result_node|cs_buffer [3] = \B[3]~reg0_regout  $ \A[3]~reg0_regout  $ \Add0|adder|result_node|cs_buffer[2]~COUT 
+// \Add0|adder|result_node|cs_buffer[3]~COUT  = CARRY(\B[3]~reg0_regout  & (\A[3]~reg0_regout  # \Add0|adder|result_node|cs_buffer[2]~COUT ) # !\B[3]~reg0_regout  & \A[3]~reg0_regout  & \Add0|adder|result_node|cs_buffer[2]~COUT )
+
+	.dataa(\B[3]~reg0_regout ),
+	.datab(\A[3]~reg0_regout ),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(\Add0|adder|result_node|cs_buffer[2]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add0|adder|result_node|cs_buffer [3]),
+	.regout(),
+	.cout(\Add0|adder|result_node|cs_buffer[3]~COUT ),
+	.cascout());
+// synopsys translate_off
+defparam \Add0|adder|result_node|cs_buffer[3] .cin_used = "true";
+defparam \Add0|adder|result_node|cs_buffer[3] .clock_enable_mode = "false";
+defparam \Add0|adder|result_node|cs_buffer[3] .lut_mask = "96e8";
+defparam \Add0|adder|result_node|cs_buffer[3] .operation_mode = "arithmetic";
+defparam \Add0|adder|result_node|cs_buffer[3] .output_mode = "comb_only";
+defparam \Add0|adder|result_node|cs_buffer[3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B3
+flex10ke_lcell \A~93 (
+// Equation(s):
+// \A~93_combout  = \IP[2]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[2]~reg0_regout  & (\IP[0]~reg0_regout  & \DIFF~7_combout  # !\IP[0]~reg0_regout  & (\Add0|adder|result_node|cs_buffer [3]))
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\DIFF~7_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\Add0|adder|result_node|cs_buffer [3]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~93_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~93 .clock_enable_mode = "false";
+defparam \A~93 .lut_mask = "e5e0";
+defparam \A~93 .operation_mode = "normal";
+defparam \A~93 .output_mode = "comb_only";
+defparam \A~93 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B3
+flex10ke_lcell \A~94 (
+// Equation(s):
+// \A~94_combout  = \IP[2]~reg0_regout  & (\A[3]~reg0_regout  $ (\Add3~1_combout  & \A~93_combout )) # !\IP[2]~reg0_regout  & (\A~93_combout )
+
+	.dataa(\Add3~1_combout ),
+	.datab(\A~93_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~94_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~94 .clock_enable_mode = "false";
+defparam \A~94 .lut_mask = "7c8c";
+defparam \A~94 .operation_mode = "normal";
+defparam \A~94 .output_mode = "comb_only";
+defparam \A~94 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B3
+flex10ke_lcell \A~95 (
+// Equation(s):
+// \A~95_combout  = \IP[1]~reg0_regout  & (\IP[3]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[3]~reg0_regout  & \A[3]~reg0_regout  # !\IP[3]~reg0_regout  & (\A~94_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\A[3]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\A~94_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~95_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~95 .clock_enable_mode = "false";
+defparam \A~95 .lut_mask = "e5e0";
+defparam \A~95 .operation_mode = "normal";
+defparam \A~95 .output_mode = "comb_only";
+defparam \A~95 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B3
+flex10ke_lcell \A~96 (
+// Equation(s):
+// \A~96_combout  = \A[3]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[2]~reg0_regout  # !\RAM[15][2]~regout )
+
+	.dataa(\A[3]~reg0_regout ),
+	.datab(\IP[0]~reg0_regout ),
+	.datac(\RAM[15][2]~regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~96_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~96 .clock_enable_mode = "false";
+defparam \A~96 .lut_mask = "8aaa";
+defparam \A~96 .operation_mode = "normal";
+defparam \A~96 .output_mode = "comb_only";
+defparam \A~96 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B3
+flex10ke_lcell \A~97 (
+// Equation(s):
+// \A~97_combout  = \IP[1]~reg0_regout  & (\A~95_combout  & (\A~96_combout ) # !\A~95_combout  & \A~92_combout ) # !\IP[1]~reg0_regout  & (\A~95_combout )
+
+	.dataa(\A~92_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\A~95_combout ),
+	.datad(\A~96_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~97_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~97 .clock_enable_mode = "false";
+defparam \A~97 .lut_mask = "f838";
+defparam \A~97 .operation_mode = "normal";
+defparam \A~97 .output_mode = "comb_only";
+defparam \A~97 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B3
+flex10ke_lcell \A[3]~reg0 (
+// Equation(s):
+// \A[3]~reg0_regout  = DFFEA(\A~97_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\A~97_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\A[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A[3]~reg0 .clock_enable_mode = "false";
+defparam \A[3]~reg0 .lut_mask = "00f0";
+defparam \A[3]~reg0 .operation_mode = "normal";
+defparam \A[3]~reg0 .output_mode = "reg_only";
+defparam \A[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B1
+flex10ke_lcell \ZF~25 (
+// Equation(s):
+// \ZF~25_combout  = \ZF~reg0_regout  # \RAM[15][2]~regout  # !\A[2]~reg0_regout  & !\A[3]~reg0_regout 
+
+	.dataa(\ZF~reg0_regout ),
+	.datab(\RAM[15][2]~regout ),
+	.datac(\A[2]~reg0_regout ),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~25_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~25 .clock_enable_mode = "false";
+defparam \ZF~25 .lut_mask = "eeef";
+defparam \ZF~25 .operation_mode = "normal";
+defparam \ZF~25 .output_mode = "comb_only";
+defparam \ZF~25 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B9
+flex10ke_lcell \Equal3~4 (
+// Equation(s):
+// \Equal3~9  = !\DIFF~7_combout  & (\LessThan0~8_combout  & \Add1|adder|result_node|cs_buffer [3] # !\LessThan0~8_combout  & (\Add2|adder|result_node|cs_buffer [3]))
+
+	.dataa(\Add1|adder|result_node|cs_buffer [3]),
+	.datab(\Add2|adder|result_node|cs_buffer [3]),
+	.datac(\LessThan0~8_combout ),
+	.datad(\DIFF~7_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal3~4_combout ),
+	.regout(),
+	.cout(),
+	.cascout(\Equal3~9 ));
+// synopsys translate_off
+defparam \Equal3~4 .clock_enable_mode = "false";
+defparam \Equal3~4 .lut_mask = "00ac";
+defparam \Equal3~4 .operation_mode = "normal";
+defparam \Equal3~4 .output_mode = "none";
+defparam \Equal3~4 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B9
+flex10ke_lcell \Equal3~6 (
+// Equation(s):
+// \Equal3~6_combout  = (!\DIFF~4_combout  & (\LessThan0~8_combout  & \Add1|adder|result_node|cs_buffer [2] # !\LessThan0~8_combout  & (\Add2|adder|result_node|cs_buffer [2]))) & CASCADE(\Equal3~9 )
+
+	.dataa(\Add1|adder|result_node|cs_buffer [2]),
+	.datab(\Add2|adder|result_node|cs_buffer [2]),
+	.datac(\LessThan0~8_combout ),
+	.datad(\DIFF~4_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(\Equal3~9 ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal3~6_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Equal3~6 .clock_enable_mode = "false";
+defparam \Equal3~6 .lut_mask = "00ac";
+defparam \Equal3~6 .operation_mode = "normal";
+defparam \Equal3~6 .output_mode = "comb_only";
+defparam \Equal3~6 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B11
+flex10ke_lcell \Equal1~0 (
+// Equation(s):
+// \Equal1~0_combout  = !\Add0|adder|result_node|cs_buffer [0] & !\Add0|adder|result_node|cs_buffer [1] & !\Add0|adder|result_node|cs_buffer [2] & !\Add0|adder|result_node|cs_buffer [3]
+
+	.dataa(\Add0|adder|result_node|cs_buffer [0]),
+	.datab(\Add0|adder|result_node|cs_buffer [1]),
+	.datac(\Add0|adder|result_node|cs_buffer [2]),
+	.datad(\Add0|adder|result_node|cs_buffer [3]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal1~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Equal1~0 .clock_enable_mode = "false";
+defparam \Equal1~0 .lut_mask = "0001";
+defparam \Equal1~0 .operation_mode = "normal";
+defparam \Equal1~0 .output_mode = "comb_only";
+defparam \Equal1~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B12
+flex10ke_lcell \ZF~33 (
+// Equation(s):
+// \ZF~33_combout  = \IP[1]~reg0_regout  & (\IP[0]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[0]~reg0_regout  & \Equal3~6_combout  # !\IP[0]~reg0_regout  & (\Equal1~0_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\Equal3~6_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\Equal1~0_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~33_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~33 .clock_enable_mode = "false";
+defparam \ZF~33 .lut_mask = "e5e0";
+defparam \ZF~33 .operation_mode = "normal";
+defparam \ZF~33 .output_mode = "comb_only";
+defparam \ZF~33 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_A4
+flex10ke_lcell \B[1]~reg0 (
+// Equation(s):
+// \B[1]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\B~58_combout  & \B~61_combout  # !\B~58_combout  & (\B[1]~reg0_regout )), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\B~61_combout ),
+	.datab(\B[1]~reg0_regout ),
+	.datac(\B~58_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\B[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \B[1]~reg0 .clock_enable_mode = "false";
+defparam \B[1]~reg0 .lut_mask = "00ac";
+defparam \B[1]~reg0 .operation_mode = "normal";
+defparam \B[1]~reg0 .output_mode = "reg_only";
+defparam \B[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B6
+flex10ke_lcell \Equal15~0 (
+// Equation(s):
+// \Equal15~0_combout  = !\B[0]~reg0_regout  & !\B[1]~reg0_regout  & !\B[2]~reg0_regout  & !\B[3]~reg0_regout 
+
+	.dataa(\B[0]~reg0_regout ),
+	.datab(\B[1]~reg0_regout ),
+	.datac(\B[2]~reg0_regout ),
+	.datad(\B[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Equal15~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Equal15~0 .clock_enable_mode = "false";
+defparam \Equal15~0 .lut_mask = "0001";
+defparam \Equal15~0 .operation_mode = "normal";
+defparam \Equal15~0 .output_mode = "comb_only";
+defparam \Equal15~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B12
+flex10ke_lcell \ZF~34 (
+// Equation(s):
+// \ZF~34_combout  = \IP[1]~reg0_regout  & (\ZF~33_combout  & (\Equal15~0_combout ) # !\ZF~33_combout  & \Equal13~0_combout ) # !\IP[1]~reg0_regout  & (\ZF~33_combout )
+
+	.dataa(\Equal13~0_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\ZF~33_combout ),
+	.datad(\Equal15~0_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~34_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~34 .clock_enable_mode = "false";
+defparam \ZF~34 .lut_mask = "f838";
+defparam \ZF~34 .operation_mode = "normal";
+defparam \ZF~34 .output_mode = "comb_only";
+defparam \ZF~34 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B12
+flex10ke_lcell \ZF~32 (
+// Equation(s):
+// \ZF~45  = \IP[2]~reg0_regout  # \IP[1]~reg0_regout  $ \IP[3]~reg0_regout  # !\ZF~reg0_regout 
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\ZF~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~32_combout ),
+	.regout(),
+	.cout(),
+	.cascout(\ZF~45 ));
+// synopsys translate_off
+defparam \ZF~32 .clock_enable_mode = "false";
+defparam \ZF~32 .lut_mask = "beff";
+defparam \ZF~32 .operation_mode = "normal";
+defparam \ZF~32 .output_mode = "none";
+defparam \ZF~32 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B12
+flex10ke_lcell \ZF~37 (
+// Equation(s):
+// \ZF~37_combout  = (\IP[2]~reg0_regout  # \IP[1]~reg0_regout  $ \IP[3]~reg0_regout  # !\ZF~34_combout ) & CASCADE(\ZF~45 )
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\ZF~34_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(\ZF~45 ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\ZF~37_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~37 .clock_enable_mode = "false";
+defparam \ZF~37 .lut_mask = "beff";
+defparam \ZF~37 .operation_mode = "normal";
+defparam \ZF~37 .output_mode = "comb_only";
+defparam \ZF~37 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B12
+flex10ke_lcell \ZF~reg0 (
+// Equation(s):
+// \ZF~reg0_regout  = DFFEA(\ZF~26_combout  & \ZF~25_combout  # !\ZF~37_combout , GLOBAL(\clock~dataout ), , , \ZF~31_combout , , )
+
+	.dataa(\ZF~31_combout ),
+	.datab(\ZF~26_combout ),
+	.datac(\ZF~25_combout ),
+	.datad(\ZF~37_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\ZF~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \ZF~reg0 .clock_enable_mode = "true";
+defparam \ZF~reg0 .lut_mask = "c0ff";
+defparam \ZF~reg0 .operation_mode = "normal";
+defparam \ZF~reg0 .output_mode = "reg_only";
+defparam \ZF~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B20
+flex10ke_lcell \PC_temp~75 (
+// Equation(s):
+// \PC_temp~75_combout  = !\IP[0]~reg0_regout  & (\PC_temp[2]~reg0_regout  # \IP[2]~reg0_regout  # \ZF~reg0_regout )
+
+	.dataa(\PC_temp[2]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\ZF~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~75_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~75 .clock_enable_mode = "false";
+defparam \PC_temp~75 .lut_mask = "00fe";
+defparam \PC_temp~75 .operation_mode = "normal";
+defparam \PC_temp~75 .output_mode = "comb_only";
+defparam \PC_temp~75 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C14
+flex10ke_lcell \SP[1]~reg0 (
+// Equation(s):
+// \SP[1]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\IP[3]~reg0_regout  & \SP~39_combout  # !\IP[3]~reg0_regout  & (\SP[1]~reg0_regout )), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\SP~39_combout ),
+	.datab(\SP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\SP[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP[1]~reg0 .clock_enable_mode = "false";
+defparam \SP[1]~reg0 .lut_mask = "00ac";
+defparam \SP[1]~reg0 .operation_mode = "normal";
+defparam \SP[1]~reg0 .output_mode = "reg_only";
+defparam \SP[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C13
+flex10ke_lcell \A~68 (
+// Equation(s):
+// \A~68_combout  = \IP[2]~reg0_regout  & !\IP[0]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~68_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~68 .clock_enable_mode = "false";
+defparam \A~68 .lut_mask = "00f0";
+defparam \A~68 .operation_mode = "normal";
+defparam \A~68 .output_mode = "comb_only";
+defparam \A~68 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C13
+flex10ke_lcell \A~99 (
+// Equation(s):
+// \A~99_combout  = \IP[0]~reg0_regout  & !\IP[2]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\A~99_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \A~99 .clock_enable_mode = "false";
+defparam \A~99 .lut_mask = "00f0";
+defparam \A~99 .operation_mode = "normal";
+defparam \A~99 .output_mode = "comb_only";
+defparam \A~99 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C13
+flex10ke_lcell \Stack~332 (
+// Equation(s):
+// \Stack~332_combout  = \B[2]~reg0_regout  & (\A~99_combout  # \PC_rtl_0|wysi_counter|counter_cell [2] & \A~68_combout ) # !\B[2]~reg0_regout  & \PC_rtl_0|wysi_counter|counter_cell [2] & \A~68_combout 
+
+	.dataa(\B[2]~reg0_regout ),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.datac(\A~68_combout ),
+	.datad(\A~99_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~332_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~332 .clock_enable_mode = "false";
+defparam \Stack~332 .lut_mask = "eac0";
+defparam \Stack~332 .operation_mode = "normal";
+defparam \Stack~332 .output_mode = "comb_only";
+defparam \Stack~332 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B21
+flex10ke_lcell \Stack~272 (
+// Equation(s):
+// \Stack~272_combout  = \IP[3]~reg0_regout  & !\IP[1]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~272_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~272 .clock_enable_mode = "false";
+defparam \Stack~272 .lut_mask = "00f0";
+defparam \Stack~272 .operation_mode = "normal";
+defparam \Stack~272 .output_mode = "comb_only";
+defparam \Stack~272 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C19
+flex10ke_lcell \Stack[0][2] (
+// Equation(s):
+// \Stack[0][2]~regout  = DFFEA(\Stack~332_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~327_combout , , )
+
+	.dataa(\Stack~327_combout ),
+	.datab(\Stack~332_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[0][2]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[0][2] .clock_enable_mode = "true";
+defparam \Stack[0][2] .lut_mask = "00c0";
+defparam \Stack[0][2] .operation_mode = "normal";
+defparam \Stack[0][2] .output_mode = "reg_only";
+defparam \Stack[0][2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C18
+flex10ke_lcell \SP~36 (
+// Equation(s):
+// \SP~36_combout  = \IP[3]~reg0_regout  & (\IP[1]~reg0_regout  $ (\IP[2]~reg0_regout  # \IP[0]~reg0_regout ))
+
+	.dataa(\IP[3]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\SP~36_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP~36 .clock_enable_mode = "false";
+defparam \SP~36 .lut_mask = "0a28";
+defparam \SP~36 .operation_mode = "normal";
+defparam \SP~36 .output_mode = "comb_only";
+defparam \SP~36 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C18
+flex10ke_lcell \SP[0]~reg0 (
+// Equation(s):
+// \SP[0]~reg0_regout  = DFFEA(!\HLT~reg0_regout  & (\SP[0]~reg0_regout  $ \SP~36_combout ), GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\SP~36_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\SP[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SP[0]~reg0 .clock_enable_mode = "false";
+defparam \SP[0]~reg0 .lut_mask = "003c";
+defparam \SP[0]~reg0 .operation_mode = "normal";
+defparam \SP[0]~reg0 .output_mode = "reg_only";
+defparam \SP[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C15
+flex10ke_lcell \Stack[3][2] (
+// Equation(s):
+// \Stack[3][2]~regout  = DFFEA(\Stack~332_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~329_combout , , )
+
+	.dataa(\Stack~329_combout ),
+	.datab(\Stack~332_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[3][2]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[3][2] .clock_enable_mode = "true";
+defparam \Stack[3][2] .lut_mask = "00c0";
+defparam \Stack[3][2] .operation_mode = "normal";
+defparam \Stack[3][2] .output_mode = "reg_only";
+defparam \Stack[3][2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C17
+flex10ke_lcell \Mux1~0 (
+// Equation(s):
+// \Mux1~0_combout  = \SP[1]~reg0_regout  & (\SP[0]~reg0_regout ) # !\SP[1]~reg0_regout  & (\SP[0]~reg0_regout  & \Stack[0][2]~regout  # !\SP[0]~reg0_regout  & (\Stack[3][2]~regout ))
+
+	.dataa(\SP[1]~reg0_regout ),
+	.datab(\Stack[0][2]~regout ),
+	.datac(\SP[0]~reg0_regout ),
+	.datad(\Stack[3][2]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux1~0 .clock_enable_mode = "false";
+defparam \Mux1~0 .lut_mask = "e5e0";
+defparam \Mux1~0 .operation_mode = "normal";
+defparam \Mux1~0 .output_mode = "comb_only";
+defparam \Mux1~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C15
+flex10ke_lcell \Stack[2][2] (
+// Equation(s):
+// \Stack[2][2]~regout  = DFFEA(\Stack~332_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~330_combout , , )
+
+	.dataa(\Stack~330_combout ),
+	.datab(\Stack~332_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[2][2]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[2][2] .clock_enable_mode = "true";
+defparam \Stack[2][2] .lut_mask = "00c0";
+defparam \Stack[2][2] .operation_mode = "normal";
+defparam \Stack[2][2] .output_mode = "reg_only";
+defparam \Stack[2][2] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C17
+flex10ke_lcell \Mux1~1 (
+// Equation(s):
+// \Mux1~1_combout  = \SP[1]~reg0_regout  & (\Mux1~0_combout  & (\Stack[2][2]~regout ) # !\Mux1~0_combout  & \Stack[1][2]~regout ) # !\SP[1]~reg0_regout  & (\Mux1~0_combout )
+
+	.dataa(\Stack[1][2]~regout ),
+	.datab(\SP[1]~reg0_regout ),
+	.datac(\Mux1~0_combout ),
+	.datad(\Stack[2][2]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux1~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux1~1 .clock_enable_mode = "false";
+defparam \Mux1~1 .lut_mask = "f838";
+defparam \Mux1~1 .operation_mode = "normal";
+defparam \Mux1~1 .output_mode = "comb_only";
+defparam \Mux1~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B20
+flex10ke_lcell \PC_temp~76 (
+// Equation(s):
+// \PC_temp~76_combout  = \PC_temp~75_combout  # \IP[2]~reg0_regout  & \Mux1~1_combout 
+
+	.dataa(vcc),
+	.datab(\PC_temp~75_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\Mux1~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~76_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~76 .clock_enable_mode = "false";
+defparam \PC_temp~76 .lut_mask = "fccc";
+defparam \PC_temp~76 .operation_mode = "normal";
+defparam \PC_temp~76 .output_mode = "comb_only";
+defparam \PC_temp~76 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B20
+flex10ke_lcell \PC_temp[2]~reg0 (
+// Equation(s):
+// \PC_temp[2]~reg0_regout  = DFFEA(\IP[3]~reg0_regout  & \PC_temp~76_combout  & !\IP[1]~reg0_regout , GLOBAL(\clock~dataout ), , , \PC_temp[0]~72_combout , , )
+
+	.dataa(\PC_temp[0]~72_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\PC_temp~76_combout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_temp[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[2]~reg0 .clock_enable_mode = "true";
+defparam \PC_temp[2]~reg0 .lut_mask = "00c0";
+defparam \PC_temp[2]~reg0 .operation_mode = "normal";
+defparam \PC_temp[2]~reg0 .output_mode = "reg_only";
+defparam \PC_temp[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B18
+flex10ke_lcell \PC_temp~77 (
+// Equation(s):
+// \PC_temp~77_combout  = !\IP[0]~reg0_regout  & (\PC_temp[3]~reg0_regout  # \IP[2]~reg0_regout  # \ZF~reg0_regout )
+
+	.dataa(\PC_temp[3]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\ZF~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~77_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~77 .clock_enable_mode = "false";
+defparam \PC_temp~77 .lut_mask = "00fe";
+defparam \PC_temp~77 .operation_mode = "normal";
+defparam \PC_temp~77 .output_mode = "comb_only";
+defparam \PC_temp~77 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C13
+flex10ke_lcell \Stack~333 (
+// Equation(s):
+// \Stack~333_combout  = \B[3]~reg0_regout  & (\A~99_combout  # \PC_rtl_0|wysi_counter|counter_cell [3] & \A~68_combout ) # !\B[3]~reg0_regout  & \PC_rtl_0|wysi_counter|counter_cell [3] & \A~68_combout 
+
+	.dataa(\B[3]~reg0_regout ),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.datac(\A~68_combout ),
+	.datad(\A~99_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~333_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~333 .clock_enable_mode = "false";
+defparam \Stack~333 .lut_mask = "eac0";
+defparam \Stack~333 .operation_mode = "normal";
+defparam \Stack~333 .output_mode = "comb_only";
+defparam \Stack~333 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C19
+flex10ke_lcell \Stack[1][3] (
+// Equation(s):
+// \Stack[1][3]~regout  = DFFEA(\Stack~333_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~328_combout , , )
+
+	.dataa(\Stack~328_combout ),
+	.datab(\Stack~333_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[1][3]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[1][3] .clock_enable_mode = "true";
+defparam \Stack[1][3] .lut_mask = "00c0";
+defparam \Stack[1][3] .operation_mode = "normal";
+defparam \Stack[1][3] .output_mode = "reg_only";
+defparam \Stack[1][3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C15
+flex10ke_lcell \Stack[3][3] (
+// Equation(s):
+// \Stack[3][3]~regout  = DFFEA(\Stack~333_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~329_combout , , )
+
+	.dataa(\Stack~329_combout ),
+	.datab(\Stack~333_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[3][3]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[3][3] .clock_enable_mode = "true";
+defparam \Stack[3][3] .lut_mask = "00c0";
+defparam \Stack[3][3] .operation_mode = "normal";
+defparam \Stack[3][3] .output_mode = "reg_only";
+defparam \Stack[3][3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C17
+flex10ke_lcell \Mux0~0 (
+// Equation(s):
+// \Mux0~0_combout  = \SP[0]~reg0_regout  & (\SP[1]~reg0_regout ) # !\SP[0]~reg0_regout  & (\SP[1]~reg0_regout  & \Stack[1][3]~regout  # !\SP[1]~reg0_regout  & (\Stack[3][3]~regout ))
+
+	.dataa(\SP[0]~reg0_regout ),
+	.datab(\Stack[1][3]~regout ),
+	.datac(\SP[1]~reg0_regout ),
+	.datad(\Stack[3][3]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux0~0 .clock_enable_mode = "false";
+defparam \Mux0~0 .lut_mask = "e5e0";
+defparam \Mux0~0 .operation_mode = "normal";
+defparam \Mux0~0 .output_mode = "comb_only";
+defparam \Mux0~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C15
+flex10ke_lcell \Stack[2][3] (
+// Equation(s):
+// \Stack[2][3]~regout  = DFFEA(\Stack~333_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~330_combout , , )
+
+	.dataa(\Stack~330_combout ),
+	.datab(\Stack~333_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[2][3]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[2][3] .clock_enable_mode = "true";
+defparam \Stack[2][3] .lut_mask = "00c0";
+defparam \Stack[2][3] .operation_mode = "normal";
+defparam \Stack[2][3] .output_mode = "reg_only";
+defparam \Stack[2][3] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C17
+flex10ke_lcell \Mux0~1 (
+// Equation(s):
+// \Mux0~1_combout  = \SP[0]~reg0_regout  & (\Mux0~0_combout  & (\Stack[2][3]~regout ) # !\Mux0~0_combout  & \Stack[0][3]~regout ) # !\SP[0]~reg0_regout  & (\Mux0~0_combout )
+
+	.dataa(\Stack[0][3]~regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\Mux0~0_combout ),
+	.datad(\Stack[2][3]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux0~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux0~1 .clock_enable_mode = "false";
+defparam \Mux0~1 .lut_mask = "f838";
+defparam \Mux0~1 .operation_mode = "normal";
+defparam \Mux0~1 .output_mode = "comb_only";
+defparam \Mux0~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B18
+flex10ke_lcell \PC_temp~78 (
+// Equation(s):
+// \PC_temp~78_combout  = \PC_temp~77_combout  # \IP[2]~reg0_regout  & \Mux0~1_combout 
+
+	.dataa(vcc),
+	.datab(\PC_temp~77_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\Mux0~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~78_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~78 .clock_enable_mode = "false";
+defparam \PC_temp~78 .lut_mask = "fccc";
+defparam \PC_temp~78 .operation_mode = "normal";
+defparam \PC_temp~78 .output_mode = "comb_only";
+defparam \PC_temp~78 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B18
+flex10ke_lcell \PC_temp[3]~reg0 (
+// Equation(s):
+// \PC_temp[3]~reg0_regout  = DFFEA(\IP[3]~reg0_regout  & \PC_temp~78_combout  & !\IP[1]~reg0_regout , GLOBAL(\clock~dataout ), , , \PC_temp[0]~72_combout , , )
+
+	.dataa(\PC_temp[0]~72_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\PC_temp~78_combout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_temp[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[3]~reg0 .clock_enable_mode = "true";
+defparam \PC_temp[3]~reg0 .lut_mask = "00c0";
+defparam \PC_temp[3]~reg0 .operation_mode = "normal";
+defparam \PC_temp[3]~reg0 .output_mode = "reg_only";
+defparam \PC_temp[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B13
+flex10ke_lcell \IP~17 (
+// Equation(s):
+// \IP~17_combout  = \IP~16_combout  # !\PC_temp[0]~reg0_regout  & !\PC_temp[2]~reg0_regout  & !\PC_temp[3]~reg0_regout 
+
+	.dataa(\IP~16_combout ),
+	.datab(\PC_temp[0]~reg0_regout ),
+	.datac(\PC_temp[2]~reg0_regout ),
+	.datad(\PC_temp[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~17_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~17 .clock_enable_mode = "false";
+defparam \IP~17 .lut_mask = "aaab";
+defparam \IP~17 .operation_mode = "normal";
+defparam \IP~17 .output_mode = "comb_only";
+defparam \IP~17 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B17
+flex10ke_lcell \IP~18 (
+// Equation(s):
+// \IP~18_combout  = \PC_rtl_0|wysi_counter|counter_cell [0] & \PC_rtl_0|wysi_counter|counter_cell [2] & (\PC_rtl_0|wysi_counter|counter_cell [1] $ !\PC_rtl_0|wysi_counter|counter_cell [3]) # !\PC_rtl_0|wysi_counter|counter_cell [0] & 
+// !\PC_rtl_0|wysi_counter|counter_cell [3] & (\PC_rtl_0|wysi_counter|counter_cell [1] # !\PC_rtl_0|wysi_counter|counter_cell [2])
+
+	.dataa(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.datac(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.datad(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~18_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~18 .clock_enable_mode = "false";
+defparam \IP~18 .lut_mask = "802d";
+defparam \IP~18 .operation_mode = "normal";
+defparam \IP~18 .output_mode = "comb_only";
+defparam \IP~18 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B14
+flex10ke_lcell \IP[2]~reg0 (
+// Equation(s):
+// \IP[2]~reg0_regout  = DFFEA(\IP~8_combout  & (\always1~3_combout  & (\IP~18_combout ) # !\always1~3_combout  & \IP~17_combout ), !GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\IP~8_combout ),
+	.datab(\IP~17_combout ),
+	.datac(\IP~18_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\IP[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP[2]~reg0 .clock_enable_mode = "false";
+defparam \IP[2]~reg0 .lut_mask = "a088";
+defparam \IP[2]~reg0 .operation_mode = "normal";
+defparam \IP[2]~reg0 .output_mode = "reg_only";
+defparam \IP[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B20
+flex10ke_lcell \PC_temp~73 (
+// Equation(s):
+// \PC_temp~73_combout  = !\IP[0]~reg0_regout  & (\PC_temp[1]~reg0_regout  # \IP[2]~reg0_regout  # \ZF~reg0_regout )
+
+	.dataa(\PC_temp[1]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\ZF~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~73_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~73 .clock_enable_mode = "false";
+defparam \PC_temp~73 .lut_mask = "00fe";
+defparam \PC_temp~73 .operation_mode = "normal";
+defparam \PC_temp~73 .output_mode = "comb_only";
+defparam \PC_temp~73 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C13
+flex10ke_lcell \Stack~331 (
+// Equation(s):
+// \Stack~331_combout  = \B[1]~reg0_regout  & (\A~99_combout  # \PC_rtl_0|wysi_counter|counter_cell [1] & \A~68_combout ) # !\B[1]~reg0_regout  & \PC_rtl_0|wysi_counter|counter_cell [1] & \A~68_combout 
+
+	.dataa(\B[1]~reg0_regout ),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.datac(\A~68_combout ),
+	.datad(\A~99_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~331_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~331 .clock_enable_mode = "false";
+defparam \Stack~331 .lut_mask = "eac0";
+defparam \Stack~331 .operation_mode = "normal";
+defparam \Stack~331 .output_mode = "comb_only";
+defparam \Stack~331 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C19
+flex10ke_lcell \Stack[1][1] (
+// Equation(s):
+// \Stack[1][1]~regout  = DFFEA(\Stack~331_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~328_combout , , )
+
+	.dataa(\Stack~328_combout ),
+	.datab(\Stack~331_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[1][1]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[1][1] .clock_enable_mode = "true";
+defparam \Stack[1][1] .lut_mask = "00c0";
+defparam \Stack[1][1] .operation_mode = "normal";
+defparam \Stack[1][1] .output_mode = "reg_only";
+defparam \Stack[1][1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C15
+flex10ke_lcell \Stack[3][1] (
+// Equation(s):
+// \Stack[3][1]~regout  = DFFEA(\Stack~331_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~329_combout , , )
+
+	.dataa(\Stack~329_combout ),
+	.datab(\Stack~331_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[3][1]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[3][1] .clock_enable_mode = "true";
+defparam \Stack[3][1] .lut_mask = "00c0";
+defparam \Stack[3][1] .operation_mode = "normal";
+defparam \Stack[3][1] .output_mode = "reg_only";
+defparam \Stack[3][1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C24
+flex10ke_lcell \Mux2~0 (
+// Equation(s):
+// \Mux2~0_combout  = \SP[0]~reg0_regout  & (\SP[1]~reg0_regout ) # !\SP[0]~reg0_regout  & (\SP[1]~reg0_regout  & \Stack[1][1]~regout  # !\SP[1]~reg0_regout  & (\Stack[3][1]~regout ))
+
+	.dataa(\SP[0]~reg0_regout ),
+	.datab(\Stack[1][1]~regout ),
+	.datac(\SP[1]~reg0_regout ),
+	.datad(\Stack[3][1]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux2~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux2~0 .clock_enable_mode = "false";
+defparam \Mux2~0 .lut_mask = "e5e0";
+defparam \Mux2~0 .operation_mode = "normal";
+defparam \Mux2~0 .output_mode = "comb_only";
+defparam \Mux2~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C15
+flex10ke_lcell \Stack[2][1] (
+// Equation(s):
+// \Stack[2][1]~regout  = DFFEA(\Stack~331_combout  & \Stack~272_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~330_combout , , )
+
+	.dataa(\Stack~330_combout ),
+	.datab(\Stack~331_combout ),
+	.datac(\Stack~272_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[2][1]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[2][1] .clock_enable_mode = "true";
+defparam \Stack[2][1] .lut_mask = "00c0";
+defparam \Stack[2][1] .operation_mode = "normal";
+defparam \Stack[2][1] .output_mode = "reg_only";
+defparam \Stack[2][1] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C24
+flex10ke_lcell \Mux2~1 (
+// Equation(s):
+// \Mux2~1_combout  = \SP[0]~reg0_regout  & (\Mux2~0_combout  & (\Stack[2][1]~regout ) # !\Mux2~0_combout  & \Stack[0][1]~regout ) # !\SP[0]~reg0_regout  & (\Mux2~0_combout )
+
+	.dataa(\Stack[0][1]~regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\Mux2~0_combout ),
+	.datad(\Stack[2][1]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux2~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux2~1 .clock_enable_mode = "false";
+defparam \Mux2~1 .lut_mask = "f838";
+defparam \Mux2~1 .operation_mode = "normal";
+defparam \Mux2~1 .output_mode = "comb_only";
+defparam \Mux2~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B20
+flex10ke_lcell \PC_temp~74 (
+// Equation(s):
+// \PC_temp~74_combout  = \PC_temp~73_combout  # \IP[2]~reg0_regout  & \Mux2~1_combout 
+
+	.dataa(vcc),
+	.datab(\PC_temp~73_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\Mux2~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~74_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~74 .clock_enable_mode = "false";
+defparam \PC_temp~74 .lut_mask = "fccc";
+defparam \PC_temp~74 .operation_mode = "normal";
+defparam \PC_temp~74 .output_mode = "comb_only";
+defparam \PC_temp~74 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B20
+flex10ke_lcell \PC_temp[1]~reg0 (
+// Equation(s):
+// \PC_temp[1]~reg0_regout  = DFFEA(\IP[3]~reg0_regout  & \PC_temp~74_combout  & !\IP[1]~reg0_regout , GLOBAL(\clock~dataout ), , , \PC_temp[0]~72_combout , , )
+
+	.dataa(\PC_temp[0]~72_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\PC_temp~74_combout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_temp[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[1]~reg0 .clock_enable_mode = "true";
+defparam \PC_temp[1]~reg0 .lut_mask = "00c0";
+defparam \PC_temp[1]~reg0 .operation_mode = "normal";
+defparam \PC_temp[1]~reg0 .output_mode = "reg_only";
+defparam \PC_temp[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B13
+flex10ke_lcell \Add6~3 (
+// Equation(s):
+// \Add6~3_combout  = \PC_temp[0]~reg0_regout  & \PC_temp[1]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\PC_temp[0]~reg0_regout ),
+	.datad(\PC_temp[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add6~3_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add6~3 .clock_enable_mode = "false";
+defparam \Add6~3 .lut_mask = "f000";
+defparam \Add6~3 .operation_mode = "normal";
+defparam \Add6~3 .output_mode = "comb_only";
+defparam \Add6~3 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B13
+flex10ke_lcell \IP~16 (
+// Equation(s):
+// \IP~16_combout  = \PC_temp[2]~reg0_regout  & (\PC_temp[3]~reg0_regout  & \Add6~3_combout  # !\PC_temp[3]~reg0_regout  & (\Add6~0_combout ))
+
+	.dataa(\PC_temp[2]~reg0_regout ),
+	.datab(\Add6~3_combout ),
+	.datac(\Add6~0_combout ),
+	.datad(\PC_temp[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~16_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~16 .clock_enable_mode = "false";
+defparam \IP~16 .lut_mask = "88a0";
+defparam \IP~16 .operation_mode = "normal";
+defparam \IP~16 .output_mode = "comb_only";
+defparam \IP~16 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B17
+flex10ke_lcell \IP~20 (
+// Equation(s):
+// \IP~20_combout  = \PC_rtl_0|wysi_counter|counter_cell [2] & (\PC_rtl_0|wysi_counter|counter_cell [0] & (\PC_rtl_0|wysi_counter|counter_cell [1] $ !\PC_rtl_0|wysi_counter|counter_cell [3]) # !\PC_rtl_0|wysi_counter|counter_cell [0] & 
+// \PC_rtl_0|wysi_counter|counter_cell [1] & !\PC_rtl_0|wysi_counter|counter_cell [3])
+
+	.dataa(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.datac(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.datad(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~20_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~20 .clock_enable_mode = "false";
+defparam \IP~20 .lut_mask = "8028";
+defparam \IP~20 .operation_mode = "normal";
+defparam \IP~20 .output_mode = "comb_only";
+defparam \IP~20 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B8
+flex10ke_lcell \IP[3]~reg0 (
+// Equation(s):
+// \IP[3]~reg0_regout  = DFFEA(\IP~8_combout  & (\always1~3_combout  & (\IP~20_combout ) # !\always1~3_combout  & \IP~16_combout ), !GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\IP~8_combout ),
+	.datab(\IP~16_combout ),
+	.datac(\IP~20_combout ),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\IP[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP[3]~reg0 .clock_enable_mode = "false";
+defparam \IP[3]~reg0 .lut_mask = "a088";
+defparam \IP[3]~reg0 .operation_mode = "normal";
+defparam \IP[3]~reg0 .output_mode = "reg_only";
+defparam \IP[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B18
+flex10ke_lcell \PC_temp~69 (
+// Equation(s):
+// \PC_temp~69_combout  = !\IP[0]~reg0_regout  & (\PC_temp[0]~reg0_regout  # \IP[2]~reg0_regout  # \ZF~reg0_regout )
+
+	.dataa(\PC_temp[0]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\ZF~reg0_regout ),
+	.datad(\IP[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~69_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~69 .clock_enable_mode = "false";
+defparam \PC_temp~69 .lut_mask = "00fe";
+defparam \PC_temp~69 .operation_mode = "normal";
+defparam \PC_temp~69 .output_mode = "comb_only";
+defparam \PC_temp~69 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C13
+flex10ke_lcell \Stack~325 (
+// Equation(s):
+// \Stack~325_combout  = \B[0]~reg0_regout  & (\A~99_combout  # \PC_rtl_0|wysi_counter|counter_cell [0] & \A~68_combout ) # !\B[0]~reg0_regout  & \PC_rtl_0|wysi_counter|counter_cell [0] & \A~68_combout 
+
+	.dataa(\B[0]~reg0_regout ),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.datac(\A~68_combout ),
+	.datad(\A~99_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Stack~325_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack~325 .clock_enable_mode = "false";
+defparam \Stack~325 .lut_mask = "eac0";
+defparam \Stack~325 .operation_mode = "normal";
+defparam \Stack~325 .output_mode = "comb_only";
+defparam \Stack~325 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C19
+flex10ke_lcell \Stack[1][0] (
+// Equation(s):
+// \Stack[1][0]~regout  = DFFEA(\Stack~272_combout  & \Stack~325_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~328_combout , , )
+
+	.dataa(\Stack~328_combout ),
+	.datab(\Stack~272_combout ),
+	.datac(\Stack~325_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[1][0]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[1][0] .clock_enable_mode = "true";
+defparam \Stack[1][0] .lut_mask = "00c0";
+defparam \Stack[1][0] .operation_mode = "normal";
+defparam \Stack[1][0] .output_mode = "reg_only";
+defparam \Stack[1][0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_C15
+flex10ke_lcell \Stack[3][0] (
+// Equation(s):
+// \Stack[3][0]~regout  = DFFEA(\Stack~272_combout  & \Stack~325_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~329_combout , , )
+
+	.dataa(\Stack~329_combout ),
+	.datab(\Stack~272_combout ),
+	.datac(\Stack~325_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[3][0]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[3][0] .clock_enable_mode = "true";
+defparam \Stack[3][0] .lut_mask = "00c0";
+defparam \Stack[3][0] .operation_mode = "normal";
+defparam \Stack[3][0] .output_mode = "reg_only";
+defparam \Stack[3][0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_C17
+flex10ke_lcell \Mux3~0 (
+// Equation(s):
+// \Mux3~0_combout  = \SP[0]~reg0_regout  & (\SP[1]~reg0_regout ) # !\SP[0]~reg0_regout  & (\SP[1]~reg0_regout  & \Stack[1][0]~regout  # !\SP[1]~reg0_regout  & (\Stack[3][0]~regout ))
+
+	.dataa(\SP[0]~reg0_regout ),
+	.datab(\Stack[1][0]~regout ),
+	.datac(\SP[1]~reg0_regout ),
+	.datad(\Stack[3][0]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux3~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux3~0 .clock_enable_mode = "false";
+defparam \Mux3~0 .lut_mask = "e5e0";
+defparam \Mux3~0 .operation_mode = "normal";
+defparam \Mux3~0 .output_mode = "comb_only";
+defparam \Mux3~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C15
+flex10ke_lcell \Stack[2][0] (
+// Equation(s):
+// \Stack[2][0]~regout  = DFFEA(\Stack~272_combout  & \Stack~325_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , \Stack~330_combout , , )
+
+	.dataa(\Stack~330_combout ),
+	.datab(\Stack~272_combout ),
+	.datac(\Stack~325_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Stack[2][0]~regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Stack[2][0] .clock_enable_mode = "true";
+defparam \Stack[2][0] .lut_mask = "00c0";
+defparam \Stack[2][0] .operation_mode = "normal";
+defparam \Stack[2][0] .output_mode = "reg_only";
+defparam \Stack[2][0] .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C17
+flex10ke_lcell \Mux3~1 (
+// Equation(s):
+// \Mux3~1_combout  = \SP[0]~reg0_regout  & (\Mux3~0_combout  & (\Stack[2][0]~regout ) # !\Mux3~0_combout  & \Stack[0][0]~regout ) # !\SP[0]~reg0_regout  & (\Mux3~0_combout )
+
+	.dataa(\Stack[0][0]~regout ),
+	.datab(\SP[0]~reg0_regout ),
+	.datac(\Mux3~0_combout ),
+	.datad(\Stack[2][0]~regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Mux3~1_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Mux3~1 .clock_enable_mode = "false";
+defparam \Mux3~1 .lut_mask = "f838";
+defparam \Mux3~1 .operation_mode = "normal";
+defparam \Mux3~1 .output_mode = "comb_only";
+defparam \Mux3~1 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B18
+flex10ke_lcell \PC_temp~70 (
+// Equation(s):
+// \PC_temp~70_combout  = \PC_temp~69_combout  # \IP[2]~reg0_regout  & \Mux3~1_combout 
+
+	.dataa(vcc),
+	.datab(\PC_temp~69_combout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\Mux3~1_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\PC_temp~70_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp~70 .clock_enable_mode = "false";
+defparam \PC_temp~70 .lut_mask = "fccc";
+defparam \PC_temp~70 .operation_mode = "normal";
+defparam \PC_temp~70 .output_mode = "comb_only";
+defparam \PC_temp~70 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B19
+flex10ke_lcell \PC_temp[0]~reg0 (
+// Equation(s):
+// \PC_temp[0]~reg0_regout  = DFFEA(\IP[3]~reg0_regout  & \PC_temp~70_combout  & !\IP[1]~reg0_regout , GLOBAL(\clock~dataout ), , , \PC_temp[0]~72_combout , , )
+
+	.dataa(\PC_temp[0]~72_combout ),
+	.datab(\IP[3]~reg0_regout ),
+	.datac(\PC_temp~70_combout ),
+	.datad(\IP[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\PC_temp[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \PC_temp[0]~reg0 .clock_enable_mode = "true";
+defparam \PC_temp[0]~reg0 .lut_mask = "00c0";
+defparam \PC_temp[0]~reg0 .operation_mode = "normal";
+defparam \PC_temp[0]~reg0 .output_mode = "reg_only";
+defparam \PC_temp[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B19
+flex10ke_lcell \Add6~0 (
+// Equation(s):
+// \Add6~0_combout  = \PC_temp[0]~reg0_regout  $ \PC_temp[1]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\PC_temp[0]~reg0_regout ),
+	.datad(\PC_temp[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Add6~0_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \Add6~0 .clock_enable_mode = "false";
+defparam \Add6~0 .lut_mask = "0ff0";
+defparam \Add6~0 .operation_mode = "normal";
+defparam \Add6~0 .output_mode = "comb_only";
+defparam \Add6~0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B17
+flex10ke_lcell \IP~14 (
+// Equation(s):
+// \IP~14_combout  = !\PC_rtl_0|wysi_counter|counter_cell [3] & \always1~3_combout  & (!\PC_rtl_0|wysi_counter|counter_cell [1] # !\PC_rtl_0|wysi_counter|counter_cell [0])
+
+	.dataa(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.datab(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.datac(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.datad(\always1~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~14_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~14 .clock_enable_mode = "false";
+defparam \IP~14 .lut_mask = "0700";
+defparam \IP~14 .operation_mode = "normal";
+defparam \IP~14 .output_mode = "comb_only";
+defparam \IP~14 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B18
+flex10ke_lcell \IP~9 (
+// Equation(s):
+// \IP~9_combout  = !\always1~3_combout  & !\PC_temp[3]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\always1~3_combout ),
+	.datad(\PC_temp[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\IP~9_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP~9 .clock_enable_mode = "false";
+defparam \IP~9 .lut_mask = "000f";
+defparam \IP~9 .operation_mode = "normal";
+defparam \IP~9 .output_mode = "comb_only";
+defparam \IP~9 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B13
+flex10ke_lcell \IP[1]~reg0 (
+// Equation(s):
+// \IP[1]~reg0_regout  = DFFEA(\IP~8_combout  & (\IP~14_combout  # \IP~9_combout  & !\Add6~3_combout ), !GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(\IP~8_combout ),
+	.datab(\IP~14_combout ),
+	.datac(\IP~9_combout ),
+	.datad(\Add6~3_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(!\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\IP[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \IP[1]~reg0 .clock_enable_mode = "false";
+defparam \IP[1]~reg0 .lut_mask = "88a8";
+defparam \IP[1]~reg0 .operation_mode = "normal";
+defparam \IP[1]~reg0 .output_mode = "reg_only";
+defparam \IP[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C13
+flex10ke_lcell \port_out[0]~20 (
+// Equation(s):
+// \port_out[0]~20_combout  = \A~68_combout  & !\IP[1]~reg0_regout  & !\IP[3]~reg0_regout  & !\HLT~reg0_regout 
+
+	.dataa(\A~68_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\port_out[0]~20_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \port_out[0]~20 .clock_enable_mode = "false";
+defparam \port_out[0]~20 .lut_mask = "0002";
+defparam \port_out[0]~20 .operation_mode = "normal";
+defparam \port_out[0]~20 .output_mode = "comb_only";
+defparam \port_out[0]~20 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B7
+flex10ke_lcell \port_out[0]~reg0 (
+// Equation(s):
+// \port_out[0]~reg0_regout  = DFFEA(\A[0]~reg0_regout , GLOBAL(\clock~dataout ), , , \port_out[0]~20_combout , , )
+
+	.dataa(\port_out[0]~20_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\A[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\port_out[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \port_out[0]~reg0 .clock_enable_mode = "true";
+defparam \port_out[0]~reg0 .lut_mask = "ff00";
+defparam \port_out[0]~reg0 .operation_mode = "normal";
+defparam \port_out[0]~reg0 .output_mode = "reg_only";
+defparam \port_out[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B7
+flex10ke_lcell \port_out[1]~reg0 (
+// Equation(s):
+// \port_out[1]~reg0_regout  = DFFEA(\A[1]~reg0_regout , GLOBAL(\clock~dataout ), , , \port_out[0]~20_combout , , )
+
+	.dataa(\port_out[0]~20_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\A[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\port_out[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \port_out[1]~reg0 .clock_enable_mode = "true";
+defparam \port_out[1]~reg0 .lut_mask = "ff00";
+defparam \port_out[1]~reg0 .operation_mode = "normal";
+defparam \port_out[1]~reg0 .output_mode = "reg_only";
+defparam \port_out[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B7
+flex10ke_lcell \port_out[2]~reg0 (
+// Equation(s):
+// \port_out[2]~reg0_regout  = DFFEA(\A[2]~reg0_regout , GLOBAL(\clock~dataout ), , , \port_out[0]~20_combout , , )
+
+	.dataa(\port_out[0]~20_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\A[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\port_out[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \port_out[2]~reg0 .clock_enable_mode = "true";
+defparam \port_out[2]~reg0 .lut_mask = "ff00";
+defparam \port_out[2]~reg0 .operation_mode = "normal";
+defparam \port_out[2]~reg0 .output_mode = "reg_only";
+defparam \port_out[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B7
+flex10ke_lcell \port_out[3]~reg0 (
+// Equation(s):
+// \port_out[3]~reg0_regout  = DFFEA(\A[3]~reg0_regout , GLOBAL(\clock~dataout ), , , \port_out[0]~20_combout , , )
+
+	.dataa(\port_out[0]~20_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\A[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\port_out[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \port_out[3]~reg0 .clock_enable_mode = "true";
+defparam \port_out[3]~reg0 .lut_mask = "ff00";
+defparam \port_out[3]~reg0 .operation_mode = "normal";
+defparam \port_out[3]~reg0 .output_mode = "reg_only";
+defparam \port_out[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_C8
+flex10ke_lcell \temp~75 (
+// Equation(s):
+// \temp~75_combout  = \temp~74_combout  # \DIFF~4_combout  & \IP[0]~reg0_regout  & !\IP[3]~reg0_regout 
+
+	.dataa(\temp~74_combout ),
+	.datab(\DIFF~4_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~75_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~75 .clock_enable_mode = "false";
+defparam \temp~75 .lut_mask = "aaea";
+defparam \temp~75 .operation_mode = "normal";
+defparam \temp~75 .output_mode = "comb_only";
+defparam \temp~75 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C8
+flex10ke_lcell \temp~76 (
+// Equation(s):
+// \temp~76_combout  = \IP[1]~reg0_regout  & (\IP[2]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[2]~reg0_regout  & \temp[0]~reg0_regout  # !\IP[2]~reg0_regout  & (\temp~75_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\temp[0]~reg0_regout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\temp~75_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~76_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~76 .clock_enable_mode = "false";
+defparam \temp~76 .lut_mask = "e5e0";
+defparam \temp~76 .operation_mode = "normal";
+defparam \temp~76 .output_mode = "comb_only";
+defparam \temp~76 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_C8
+flex10ke_lcell \temp~77 (
+// Equation(s):
+// \temp~77_combout  = \temp[0]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[3]~reg0_regout )
+
+	.dataa(vcc),
+	.datab(\temp[0]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~77_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~77 .clock_enable_mode = "false";
+defparam \temp~77 .lut_mask = "c0cc";
+defparam \temp~77 .operation_mode = "normal";
+defparam \temp~77 .output_mode = "comb_only";
+defparam \temp~77 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_C8
+flex10ke_lcell \temp~78 (
+// Equation(s):
+// \temp~78_combout  = \IP[1]~reg0_regout  & (\temp~76_combout  & (\temp~77_combout ) # !\temp~76_combout  & \temp~73_combout ) # !\IP[1]~reg0_regout  & (\temp~76_combout )
+
+	.dataa(\temp~73_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\temp~76_combout ),
+	.datad(\temp~77_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~78_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~78 .clock_enable_mode = "false";
+defparam \temp~78 .lut_mask = "f838";
+defparam \temp~78 .operation_mode = "normal";
+defparam \temp~78 .output_mode = "comb_only";
+defparam \temp~78 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_C8
+flex10ke_lcell \temp[0]~reg0 (
+// Equation(s):
+// \temp[0]~reg0_regout  = DFFEA(\temp~78_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\temp~78_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\temp[0]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp[0]~reg0 .clock_enable_mode = "false";
+defparam \temp[0]~reg0 .lut_mask = "00f0";
+defparam \temp[0]~reg0 .operation_mode = "normal";
+defparam \temp[0]~reg0 .output_mode = "reg_only";
+defparam \temp[0]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B9
+flex10ke_lcell \temp~111 (
+// Equation(s):
+// \temp~111_combout  = \IP[0]~reg0_regout  & !\IP[3]~reg0_regout 
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~111_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~111 .clock_enable_mode = "false";
+defparam \temp~111 .lut_mask = "00f0";
+defparam \temp~111 .operation_mode = "normal";
+defparam \temp~111 .output_mode = "comb_only";
+defparam \temp~111 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B10
+flex10ke_lcell \temp~110 (
+// Equation(s):
+// \temp~150  = \IP[3]~reg0_regout  & (!\temp[1]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  # !\Add0|adder|result_node|cs_buffer [1])
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\Add0|adder|result_node|cs_buffer [1]),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\temp[1]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~110_combout ),
+	.regout(),
+	.cout(),
+	.cascout(\temp~150 ));
+// synopsys translate_off
+defparam \temp~110 .clock_enable_mode = "false";
+defparam \temp~110 .lut_mask = "0bfb";
+defparam \temp~110 .operation_mode = "normal";
+defparam \temp~110 .output_mode = "none";
+defparam \temp~110 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B10
+flex10ke_lcell \temp~115 (
+// Equation(s):
+// \temp~115_combout  = (\LessThan0~8_combout  & \Add1|adder|result_node|cs_buffer [2] # !\LessThan0~8_combout  & (\Add2|adder|result_node|cs_buffer [2]) # !\temp~111_combout ) & CASCADE(\temp~150 )
+
+	.dataa(\Add1|adder|result_node|cs_buffer [2]),
+	.datab(\Add2|adder|result_node|cs_buffer [2]),
+	.datac(\LessThan0~8_combout ),
+	.datad(\temp~111_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(\temp~150 ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~115_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~115 .clock_enable_mode = "false";
+defparam \temp~115 .lut_mask = "acff";
+defparam \temp~115 .operation_mode = "normal";
+defparam \temp~115 .output_mode = "comb_only";
+defparam \temp~115 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_B10
+flex10ke_lcell \temp~83 (
+// Equation(s):
+// \temp~83_combout  = \IP[1]~reg0_regout  & (\IP[2]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[2]~reg0_regout  & \temp[1]~reg0_regout  # !\IP[2]~reg0_regout  & (!\temp~115_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\temp[1]~reg0_regout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\temp~115_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~83_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~83 .clock_enable_mode = "false";
+defparam \temp~83 .lut_mask = "e0e5";
+defparam \temp~83 .operation_mode = "normal";
+defparam \temp~83 .output_mode = "comb_only";
+defparam \temp~83 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B10
+flex10ke_lcell \temp~84 (
+// Equation(s):
+// \temp~84_combout  = \temp[1]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[3]~reg0_regout )
+
+	.dataa(vcc),
+	.datab(\temp[1]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~84_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~84 .clock_enable_mode = "false";
+defparam \temp~84 .lut_mask = "c0cc";
+defparam \temp~84 .operation_mode = "normal";
+defparam \temp~84 .output_mode = "comb_only";
+defparam \temp~84 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B10
+flex10ke_lcell \temp~85 (
+// Equation(s):
+// \temp~85_combout  = \IP[1]~reg0_regout  & (\temp~83_combout  & (\temp~84_combout ) # !\temp~83_combout  & \temp~81_combout ) # !\IP[1]~reg0_regout  & (\temp~83_combout )
+
+	.dataa(\temp~81_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\temp~83_combout ),
+	.datad(\temp~84_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~85_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~85 .clock_enable_mode = "false";
+defparam \temp~85 .lut_mask = "f838";
+defparam \temp~85 .operation_mode = "normal";
+defparam \temp~85 .output_mode = "comb_only";
+defparam \temp~85 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B10
+flex10ke_lcell \temp[1]~reg0 (
+// Equation(s):
+// \temp[1]~reg0_regout  = DFFEA(\temp~85_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\temp~85_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\temp[1]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp[1]~reg0 .clock_enable_mode = "false";
+defparam \temp[1]~reg0 .lut_mask = "00f0";
+defparam \temp[1]~reg0 .operation_mode = "normal";
+defparam \temp[1]~reg0 .output_mode = "reg_only";
+defparam \temp[1]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_B8
+flex10ke_lcell \temp~88 (
+// Equation(s):
+// \temp~88_combout  = \temp~87_combout  # \temp[2]~reg0_regout  & (\IP[0]~reg0_regout  $ \IP[3]~reg0_regout )
+
+	.dataa(\temp~87_combout ),
+	.datab(\temp[2]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~88_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~88 .clock_enable_mode = "false";
+defparam \temp~88 .lut_mask = "aeea";
+defparam \temp~88 .operation_mode = "normal";
+defparam \temp~88 .output_mode = "comb_only";
+defparam \temp~88 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B9
+flex10ke_lcell \temp~113 (
+// Equation(s):
+// \temp~154  = \IP[3]~reg0_regout  & (!\temp[2]~reg0_regout ) # !\IP[3]~reg0_regout  & (\IP[0]~reg0_regout  # !\Add0|adder|result_node|cs_buffer [2])
+
+	.dataa(\IP[0]~reg0_regout ),
+	.datab(\Add0|adder|result_node|cs_buffer [2]),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\temp[2]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~113_combout ),
+	.regout(),
+	.cout(),
+	.cascout(\temp~154 ));
+// synopsys translate_off
+defparam \temp~113 .clock_enable_mode = "false";
+defparam \temp~113 .lut_mask = "0bfb";
+defparam \temp~113 .operation_mode = "normal";
+defparam \temp~113 .output_mode = "none";
+defparam \temp~113 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC2_B9
+flex10ke_lcell \temp~116 (
+// Equation(s):
+// \temp~116_combout  = (\LessThan0~8_combout  & \Add1|adder|result_node|cs_buffer [3] # !\LessThan0~8_combout  & (\Add2|adder|result_node|cs_buffer [3]) # !\temp~111_combout ) & CASCADE(\temp~154 )
+
+	.dataa(\Add1|adder|result_node|cs_buffer [3]),
+	.datab(\Add2|adder|result_node|cs_buffer [3]),
+	.datac(\LessThan0~8_combout ),
+	.datad(\temp~111_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(\temp~154 ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~116_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~116 .clock_enable_mode = "false";
+defparam \temp~116 .lut_mask = "acff";
+defparam \temp~116 .operation_mode = "normal";
+defparam \temp~116 .output_mode = "comb_only";
+defparam \temp~116 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B8
+flex10ke_lcell \temp~90 (
+// Equation(s):
+// \temp~90_combout  = \IP[2]~reg0_regout  & (\IP[1]~reg0_regout ) # !\IP[2]~reg0_regout  & (\IP[1]~reg0_regout  & \temp~88_combout  # !\IP[1]~reg0_regout  & (!\temp~116_combout ))
+
+	.dataa(\IP[2]~reg0_regout ),
+	.datab(\temp~88_combout ),
+	.datac(\IP[1]~reg0_regout ),
+	.datad(\temp~116_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~90_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~90 .clock_enable_mode = "false";
+defparam \temp~90 .lut_mask = "e0e5";
+defparam \temp~90 .operation_mode = "normal";
+defparam \temp~90 .output_mode = "comb_only";
+defparam \temp~90 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B8
+flex10ke_lcell \temp~92 (
+// Equation(s):
+// \temp~92_combout  = \temp~91_combout  # \temp[2]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[3]~reg0_regout )
+
+	.dataa(\temp~91_combout ),
+	.datab(\temp[2]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~92_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~92 .clock_enable_mode = "false";
+defparam \temp~92 .lut_mask = "eaee";
+defparam \temp~92 .operation_mode = "normal";
+defparam \temp~92 .output_mode = "comb_only";
+defparam \temp~92 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B8
+flex10ke_lcell \temp~93 (
+// Equation(s):
+// \temp~93_combout  = \IP[2]~reg0_regout  & (\temp~90_combout  & (\temp~92_combout ) # !\temp~90_combout  & \temp[2]~reg0_regout ) # !\IP[2]~reg0_regout  & (\temp~90_combout )
+
+	.dataa(\temp[2]~reg0_regout ),
+	.datab(\IP[2]~reg0_regout ),
+	.datac(\temp~90_combout ),
+	.datad(\temp~92_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~93_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~93 .clock_enable_mode = "false";
+defparam \temp~93 .lut_mask = "f838";
+defparam \temp~93 .operation_mode = "normal";
+defparam \temp~93 .output_mode = "comb_only";
+defparam \temp~93 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B8
+flex10ke_lcell \temp[2]~reg0 (
+// Equation(s):
+// \temp[2]~reg0_regout  = DFFEA(\temp~93_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\temp~93_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\temp[2]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp[2]~reg0 .clock_enable_mode = "false";
+defparam \temp[2]~reg0 .lut_mask = "00f0";
+defparam \temp[2]~reg0 .operation_mode = "normal";
+defparam \temp[2]~reg0 .output_mode = "reg_only";
+defparam \temp[2]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC4_B4
+flex10ke_lcell \temp~98 (
+// Equation(s):
+// \temp~98_combout  = \temp~97_combout  # \DIFF~7_combout  & \IP[0]~reg0_regout  & !\IP[3]~reg0_regout 
+
+	.dataa(\temp~97_combout ),
+	.datab(\DIFF~7_combout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~98_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~98 .clock_enable_mode = "false";
+defparam \temp~98 .lut_mask = "aaea";
+defparam \temp~98 .operation_mode = "normal";
+defparam \temp~98 .output_mode = "comb_only";
+defparam \temp~98 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B4
+flex10ke_lcell \temp~99 (
+// Equation(s):
+// \temp~99_combout  = \IP[1]~reg0_regout  & (\IP[2]~reg0_regout ) # !\IP[1]~reg0_regout  & (\IP[2]~reg0_regout  & \temp[3]~reg0_regout  # !\IP[2]~reg0_regout  & (\temp~98_combout ))
+
+	.dataa(\IP[1]~reg0_regout ),
+	.datab(\temp[3]~reg0_regout ),
+	.datac(\IP[2]~reg0_regout ),
+	.datad(\temp~98_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~99_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~99 .clock_enable_mode = "false";
+defparam \temp~99 .lut_mask = "e5e0";
+defparam \temp~99 .operation_mode = "normal";
+defparam \temp~99 .output_mode = "comb_only";
+defparam \temp~99 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC7_B4
+flex10ke_lcell \temp~101 (
+// Equation(s):
+// \temp~101_combout  = \temp~100_combout  # \temp[3]~reg0_regout  & (\IP[0]~reg0_regout  # !\IP[3]~reg0_regout )
+
+	.dataa(\temp~100_combout ),
+	.datab(\temp[3]~reg0_regout ),
+	.datac(\IP[0]~reg0_regout ),
+	.datad(\IP[3]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~101_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~101 .clock_enable_mode = "false";
+defparam \temp~101 .lut_mask = "eaee";
+defparam \temp~101 .operation_mode = "normal";
+defparam \temp~101 .output_mode = "comb_only";
+defparam \temp~101 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC8_B4
+flex10ke_lcell \temp~102 (
+// Equation(s):
+// \temp~102_combout  = \IP[1]~reg0_regout  & (\temp~99_combout  & (\temp~101_combout ) # !\temp~99_combout  & \temp~96_combout ) # !\IP[1]~reg0_regout  & (\temp~99_combout )
+
+	.dataa(\temp~96_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\temp~99_combout ),
+	.datad(\temp~101_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\temp~102_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp~102 .clock_enable_mode = "false";
+defparam \temp~102 .lut_mask = "f838";
+defparam \temp~102 .operation_mode = "normal";
+defparam \temp~102 .output_mode = "comb_only";
+defparam \temp~102 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC1_B4
+flex10ke_lcell \temp[3]~reg0 (
+// Equation(s):
+// \temp[3]~reg0_regout  = DFFEA(\temp~102_combout  & !\HLT~reg0_regout , GLOBAL(\clock~dataout ), , , , , )
+
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\temp~102_combout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\temp[3]~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \temp[3]~reg0 .clock_enable_mode = "false";
+defparam \temp[3]~reg0 .lut_mask = "00f0";
+defparam \temp[3]~reg0 .operation_mode = "normal";
+defparam \temp[3]~reg0 .output_mode = "reg_only";
+defparam \temp[3]~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC3_C14
+flex10ke_lcell \OF~12 (
+// Equation(s):
+// \OF~12_combout  = \OF~11_combout  & !\IP[1]~reg0_regout  & !\IP[3]~reg0_regout  & !\HLT~reg0_regout 
+
+	.dataa(\OF~11_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\OF~12_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \OF~12 .clock_enable_mode = "false";
+defparam \OF~12 .lut_mask = "0002";
+defparam \OF~12 .operation_mode = "normal";
+defparam \OF~12 .output_mode = "comb_only";
+defparam \OF~12 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B11
+flex10ke_lcell \OF~reg0 (
+// Equation(s):
+// \OF~reg0_regout  = DFFEA(\Add0|adder|result_node|cs_buffer[3]~COUT , GLOBAL(\clock~dataout ), , , \OF~12_combout , , )
+
+	.dataa(\OF~12_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(vcc),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(\Add0|adder|result_node|cs_buffer[3]~COUT ),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\OF~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \OF~reg0 .cin_used = "true";
+defparam \OF~reg0 .clock_enable_mode = "true";
+defparam \OF~reg0 .lut_mask = "f0f0";
+defparam \OF~reg0 .operation_mode = "normal";
+defparam \OF~reg0 .output_mode = "reg_only";
+defparam \OF~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC6_C13
+flex10ke_lcell \SF~3 (
+// Equation(s):
+// \SF~3_combout  = \A~99_combout  & !\IP[1]~reg0_regout  & !\IP[3]~reg0_regout  & !\HLT~reg0_regout 
+
+	.dataa(\A~99_combout ),
+	.datab(\IP[1]~reg0_regout ),
+	.datac(\IP[3]~reg0_regout ),
+	.datad(\HLT~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(gnd),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\SF~3_combout ),
+	.regout(),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SF~3 .clock_enable_mode = "false";
+defparam \SF~3 .lut_mask = "0002";
+defparam \SF~3 .operation_mode = "normal";
+defparam \SF~3 .output_mode = "comb_only";
+defparam \SF~3 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at LC5_B9
+flex10ke_lcell \SF~reg0 (
+// Equation(s):
+// \SF~reg0_regout  = DFFEA(!\LessThan0~8_combout , GLOBAL(\clock~dataout ), , , \SF~3_combout , , )
+
+	.dataa(\SF~3_combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\LessThan0~8_combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.clk(\clock~dataout ),
+	.cin(gnd),
+	.cascin(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\SF~reg0_regout ),
+	.cout(),
+	.cascout());
+// synopsys translate_off
+defparam \SF~reg0 .clock_enable_mode = "true";
+defparam \SF~reg0 .lut_mask = "00ff";
+defparam \SF~reg0 .operation_mode = "normal";
+defparam \SF~reg0 .output_mode = "reg_only";
+defparam \SF~reg0 .packed_mode = "false";
+// synopsys translate_on
+
+// atom is at PIN_89
+flex10ke_io \port_out[0]~I (
+	.datain(\port_out[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(port_out[0]));
+// synopsys translate_off
+defparam \port_out[0]~I .feedback_mode = "none";
+defparam \port_out[0]~I .operation_mode = "output";
+defparam \port_out[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_86
+flex10ke_io \port_out[1]~I (
+	.datain(\port_out[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(port_out[1]));
+// synopsys translate_off
+defparam \port_out[1]~I .feedback_mode = "none";
+defparam \port_out[1]~I .operation_mode = "output";
+defparam \port_out[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_88
+flex10ke_io \port_out[2]~I (
+	.datain(\port_out[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(port_out[2]));
+// synopsys translate_off
+defparam \port_out[2]~I .feedback_mode = "none";
+defparam \port_out[2]~I .operation_mode = "output";
+defparam \port_out[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_87
+flex10ke_io \port_out[3]~I (
+	.datain(\port_out[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(port_out[3]));
+// synopsys translate_off
+defparam \port_out[3]~I .feedback_mode = "none";
+defparam \port_out[3]~I .operation_mode = "output";
+defparam \port_out[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_116
+flex10ke_io \A[0]~I (
+	.datain(\A[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(A[0]));
+// synopsys translate_off
+defparam \A[0]~I .feedback_mode = "none";
+defparam \A[0]~I .operation_mode = "output";
+defparam \A[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_13
+flex10ke_io \A[1]~I (
+	.datain(\A[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(A[1]));
+// synopsys translate_off
+defparam \A[1]~I .feedback_mode = "none";
+defparam \A[1]~I .operation_mode = "output";
+defparam \A[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_19
+flex10ke_io \A[2]~I (
+	.datain(\A[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(A[2]));
+// synopsys translate_off
+defparam \A[2]~I .feedback_mode = "none";
+defparam \A[2]~I .operation_mode = "output";
+defparam \A[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_96
+flex10ke_io \A[3]~I (
+	.datain(\A[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(A[3]));
+// synopsys translate_off
+defparam \A[3]~I .feedback_mode = "none";
+defparam \A[3]~I .operation_mode = "output";
+defparam \A[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_80
+flex10ke_io \B[0]~I (
+	.datain(\B[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(B[0]));
+// synopsys translate_off
+defparam \B[0]~I .feedback_mode = "none";
+defparam \B[0]~I .operation_mode = "output";
+defparam \B[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_79
+flex10ke_io \B[1]~I (
+	.datain(\B[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(B[1]));
+// synopsys translate_off
+defparam \B[1]~I .feedback_mode = "none";
+defparam \B[1]~I .operation_mode = "output";
+defparam \B[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_81
+flex10ke_io \B[2]~I (
+	.datain(\B[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(B[2]));
+// synopsys translate_off
+defparam \B[2]~I .feedback_mode = "none";
+defparam \B[2]~I .operation_mode = "output";
+defparam \B[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_26
+flex10ke_io \B[3]~I (
+	.datain(\B[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(B[3]));
+// synopsys translate_off
+defparam \B[3]~I .feedback_mode = "none";
+defparam \B[3]~I .operation_mode = "output";
+defparam \B[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_83
+flex10ke_io \temp[0]~I (
+	.datain(\temp[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(temp[0]));
+// synopsys translate_off
+defparam \temp[0]~I .feedback_mode = "none";
+defparam \temp[0]~I .operation_mode = "output";
+defparam \temp[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_91
+flex10ke_io \temp[1]~I (
+	.datain(\temp[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(temp[1]));
+// synopsys translate_off
+defparam \temp[1]~I .feedback_mode = "none";
+defparam \temp[1]~I .operation_mode = "output";
+defparam \temp[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_90
+flex10ke_io \temp[2]~I (
+	.datain(\temp[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(temp[2]));
+// synopsys translate_off
+defparam \temp[2]~I .feedback_mode = "none";
+defparam \temp[2]~I .operation_mode = "output";
+defparam \temp[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_92
+flex10ke_io \temp[3]~I (
+	.datain(\temp[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(temp[3]));
+// synopsys translate_off
+defparam \temp[3]~I .feedback_mode = "none";
+defparam \temp[3]~I .operation_mode = "output";
+defparam \temp[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_43
+flex10ke_io \PC[0]~I (
+	.datain(\PC_rtl_0|wysi_counter|counter_cell [0]),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC[0]));
+// synopsys translate_off
+defparam \PC[0]~I .feedback_mode = "none";
+defparam \PC[0]~I .operation_mode = "output";
+defparam \PC[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_44
+flex10ke_io \PC[1]~I (
+	.datain(\PC_rtl_0|wysi_counter|counter_cell [1]),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC[1]));
+// synopsys translate_off
+defparam \PC[1]~I .feedback_mode = "none";
+defparam \PC[1]~I .operation_mode = "output";
+defparam \PC[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_28
+flex10ke_io \PC[2]~I (
+	.datain(\PC_rtl_0|wysi_counter|counter_cell [2]),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC[2]));
+// synopsys translate_off
+defparam \PC[2]~I .feedback_mode = "none";
+defparam \PC[2]~I .operation_mode = "output";
+defparam \PC[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_135
+flex10ke_io \PC[3]~I (
+	.datain(\PC_rtl_0|wysi_counter|counter_cell [3]),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC[3]));
+// synopsys translate_off
+defparam \PC[3]~I .feedback_mode = "none";
+defparam \PC[3]~I .operation_mode = "output";
+defparam \PC[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_18
+flex10ke_io \PC_temp[0]~I (
+	.datain(\PC_temp[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC_temp[0]));
+// synopsys translate_off
+defparam \PC_temp[0]~I .feedback_mode = "none";
+defparam \PC_temp[0]~I .operation_mode = "output";
+defparam \PC_temp[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_22
+flex10ke_io \PC_temp[1]~I (
+	.datain(\PC_temp[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC_temp[1]));
+// synopsys translate_off
+defparam \PC_temp[1]~I .feedback_mode = "none";
+defparam \PC_temp[1]~I .operation_mode = "output";
+defparam \PC_temp[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_23
+flex10ke_io \PC_temp[2]~I (
+	.datain(\PC_temp[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC_temp[2]));
+// synopsys translate_off
+defparam \PC_temp[2]~I .feedback_mode = "none";
+defparam \PC_temp[2]~I .operation_mode = "output";
+defparam \PC_temp[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_20
+flex10ke_io \PC_temp[3]~I (
+	.datain(\PC_temp[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(PC_temp[3]));
+// synopsys translate_off
+defparam \PC_temp[3]~I .feedback_mode = "none";
+defparam \PC_temp[3]~I .operation_mode = "output";
+defparam \PC_temp[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_102
+flex10ke_io \IP[0]~I (
+	.datain(\IP[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(IP[0]));
+// synopsys translate_off
+defparam \IP[0]~I .feedback_mode = "none";
+defparam \IP[0]~I .operation_mode = "output";
+defparam \IP[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_8
+flex10ke_io \IP[1]~I (
+	.datain(\IP[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(IP[1]));
+// synopsys translate_off
+defparam \IP[1]~I .feedback_mode = "none";
+defparam \IP[1]~I .operation_mode = "output";
+defparam \IP[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_7
+flex10ke_io \IP[2]~I (
+	.datain(\IP[2]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(IP[2]));
+// synopsys translate_off
+defparam \IP[2]~I .feedback_mode = "none";
+defparam \IP[2]~I .operation_mode = "output";
+defparam \IP[2]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_118
+flex10ke_io \IP[3]~I (
+	.datain(\IP[3]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(IP[3]));
+// synopsys translate_off
+defparam \IP[3]~I .feedback_mode = "none";
+defparam \IP[3]~I .operation_mode = "output";
+defparam \IP[3]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_33
+flex10ke_io \SP[0]~I (
+	.datain(\SP[0]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(SP[0]));
+// synopsys translate_off
+defparam \SP[0]~I .feedback_mode = "none";
+defparam \SP[0]~I .operation_mode = "output";
+defparam \SP[0]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_32
+flex10ke_io \SP[1]~I (
+	.datain(\SP[1]~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(SP[1]));
+// synopsys translate_off
+defparam \SP[1]~I .feedback_mode = "none";
+defparam \SP[1]~I .operation_mode = "output";
+defparam \SP[1]~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_21
+flex10ke_io \OF~I (
+	.datain(\OF~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(OF));
+// synopsys translate_off
+defparam \OF~I .feedback_mode = "none";
+defparam \OF~I .operation_mode = "output";
+defparam \OF~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_17
+flex10ke_io \ZF~I (
+	.datain(\ZF~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(ZF));
+// synopsys translate_off
+defparam \ZF~I .feedback_mode = "none";
+defparam \ZF~I .operation_mode = "output";
+defparam \ZF~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_65
+flex10ke_io \SF~I (
+	.datain(\SF~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(SF));
+// synopsys translate_off
+defparam \SF~I .feedback_mode = "none";
+defparam \SF~I .operation_mode = "output";
+defparam \SF~I .reg_source_mode = "none";
+// synopsys translate_on
+
+// atom is at PIN_95
+flex10ke_io \HLT~I (
+	.datain(\HLT~reg0_regout ),
+	.clk(gnd),
+	.ena(vcc),
+	.aclr(gnd),
+	.oe(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.dataout(),
+	.padio(HLT));
+// synopsys translate_off
+defparam \HLT~I .feedback_mode = "none";
+defparam \HLT~I .operation_mode = "output";
+defparam \HLT~I .reg_source_mode = "none";
+// synopsys translate_on
+
+endmodule

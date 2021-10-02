@@ -1,0 +1,12 @@
+MOV A, [14]
+XCHG B, A
+
+MOV A, 10
+SUB A, B
+ADD A, B
+
+PUSH B
+RCL B
+POP B
+
+HLT
